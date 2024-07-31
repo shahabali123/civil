@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <% if (currUser) { %>
+        <a class="navbar-brand" href="/api/v1/user/<%= currUser._id %>"><img src="<%= currUser.avatar.url %>" alt="" <% if (currUser.role === 'admin') { %>
+         style='border: 3.5px solid #3b5998'
+        <% } %>></a>
+      <% } else {%>
+        <a class="navbar-brand" href="#">CIVIL</a>
+        <% }%>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <% if (currUser) { %>
+            <li class="nav-item">
+              <p class="nav-link active" aria-current="page"><%= currUser.username %></p>
+            </li>
+          <% } %>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/api/v1/tests">Home</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li> -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              User
+            </a>
+            <ul class="dropdown-menu">
+            <% if (!currUser) { %>
+              <li><a class="dropdown-item" href="/api/v1/register">Register</a></li>
+              <li><a class="dropdown-item" href="/api/v1/login">Login</a></li>
+            <% } %>
+              <% if (currUser) { %>
+                <li><a class="dropdown-item" href="/api/v1/logout">Logout</a></li>
+              <% } %>
+              <% if (currUser && currUser.role === 'admin') { %>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/api/v1/dashboard">Dashboard</a></li>
+              <% } %>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-disabled="true" href="/api/v1/test/create">Create new test</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search" action="/api/v1/tests">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>

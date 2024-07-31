@@ -1,0 +1,75 @@
+<%- include('../layout/header.ejs') %>
+
+    <h1>Update test Form</h1>
+    <form class="row g-3" action="/api/v1/test/update/<%= test._id %>?_method=PATCH" method="post"
+        enctype="multipart/form-data">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Test Name</label>
+          <input type="text" name="name" class="form-control" id="name" value="<%= test.name %>">
+        </div>
+
+        <div class="col-md-4">
+            <label for="category" class="form-label">Category</label>
+            <select id="category" name="category" class="form-select">
+              <option selected><%= test.category %></option>
+              <option value="Soil">Soil Test</option>
+                <option value="Aggregate">Aggregate Test</option>
+                <option value="Concrete">Concrete Test</option>
+                <option value="Asphalt">Asphalt Test</option>
+                <option value="Cement">Cement Test</option>
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="introduction" class="form-label">Test Introduction</label>
+            <textarea rows="14" type="text" name="introduction" class="form-control" id="introduction"><%= test.introduction %></textarea>
+        </div>
+
+        <div class="col-md-6">
+            <label for="equipments" class="form-label">Test Equipments</label>
+        <% for( equipment of test.equipments ) { %>
+                <input type="text" name="equipments" class="form-control" id="equipments" value="<%= equipment %>">
+                <br>
+        <% } %>
+        </div>
+
+        <div> 
+            <label for="image" class="form-label">Upload Image:</label>
+            <input type="file" class="form-control"  name="image">
+            <div class="valid-feedback">&#10003;</div>
+            <div class="invalid-feedback">This field is required.</div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="sampling" class="form-label">Test Sampling Procedure</label>
+        <% for( sample of test.sampling ) { %>
+                <input type="text" name="sampling" class="form-control" id="sampling" value="<%= sample %>">
+                <br>
+        <% } %>
+        </div>
+        
+        <div class="col-md-6">
+            <label for="procedure" class="form-label">Test Procedure</label>
+        <% for( procedure of test.procedure ) { %>
+                <input type="text" name="procedure" class="form-control" id="procedure" value="<%= procedure %>">
+                <br>
+        <% } %>
+        </div>
+
+        <div class="col-md-6">
+            <label for="formula" class="form-label">Formula for calculation</label>
+            <textarea rows="14" type="text" name="formula" class="form-control" id="formula"><%= test.formula %></textarea>
+        </div>
+
+        <div class="col-md-6">
+            <label for="result" class="form-label">Results</label>
+            <textarea rows="14" type="text" class="form-control" name="result" id="result"><%= test.result %></textarea>
+        </div>
+
+        
+        <div class="col-12">
+          <button type="submit" class="btn btn-success btn-lg">Update Test</button>
+        </div>
+      </form>
+    
+<%- include('../layout/footer.ejs') %>

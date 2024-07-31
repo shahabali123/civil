@@ -1,0 +1,50 @@
+<%- include('../layout/header.ejs') %>
+
+<form class="row g-3" action="/api/v1/register" method="post" enctype="multipart/form-data">
+
+  <div class="col-md-6">
+    <label for="username" class="form-label">User Name</label>
+    <input type="text" name="username" class="form-control" id="username" required>
+  </div>
+
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="email" name="email" class="form-control" id="inputEmail4" required>
+    </div>
+
+    <div> 
+      <label for="avatar" class="form-label">Upload Profile picture:</label>
+      <input type="file" class="form-control"  name="avatar" required>
+  </div>
+
+    <div class="col-md-4">
+      <label for="profession" class="form-label">Profession</label>
+      <select required id="profession" name="profession" class="form-select">
+        <option selected>Profession . . .</option>
+        <option value="Construction Manager">Construction Manager</option>
+        <option value="Surveyor">Surveyor</option>
+        <option value="Structural Engineer">Structural Engineer</option>
+        <option value="Site Engineer">Site Engineer</option>
+        <option value="quantity surveyor">Quantity Surveyor</option>
+        <option value="architect">Architect</option>
+        <option value="material engineer">Material Engineer</option>
+        <option value="civil engineer">Civil Engineer</option>
+        <option value="geotechnical engineer">Geotechnical Engineer</option>
+        <option value="construction estimator">Construction Estimator</option>
+        <option value="project manager">Project Manager</option>
+        <option value="lab technician">Lab Technician</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Password</label>
+      <input type="password" name="password" class="form-control" id="inputPassword4" required>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+  </form>
+
+<%- include('../layout/footer.ejs') %>

@@ -1,0 +1,69 @@
+<%- include('../layout/header.ejs') %>
+
+<div class="single-test-container">
+    <div class="main-info">
+        <h2 class="title"><%= test.name %></h2>
+        <div class="sub-info">
+            
+<p>Category: <%= test.category %></p>
+        </div>
+    </div>
+
+
+
+<p class="intro"><b>Introduction:</b> <%= test.introduction %></p>
+<img src="<%= test.image.url %>" alt="">
+<p><b>Equipments:</b></p>
+<ol>
+    <% for( equipment of test.equipments ) { %>
+        <li><%= equipment %></li>
+    <% } %>
+</ol>
+<p><b>Sampling:</b></p>
+<ol>
+    <% for( sample of test.sampling ) { %>
+        <li><%= sample %></li>
+    <% } %>
+</ol>
+<br>
+<p><b>Procedure:</b> <%= test.procedure %></p>
+<br>
+<p><b>Formula: </b> <%= test.formula %></p>
+<br>
+<p><b>Results: </b><%= test.result %></p>
+<br>
+
+
+    <% if (currUser && currUser._id.toString() === test.user._id.toString()) { %>
+        <div class="buttons">
+            <a class="btn btn-lg btn-success" href="/api/v1/test/update/<%= test._id %>">Edit</a>
+        <br>
+        <form action="/api/v1/test/delete/<%= test._id %>?_method=DELETE" method="post">
+            <button class="btn btn-lg btn-danger">Delete</button>
+        </form>
+        </div>
+    <% } %>
+
+
+<br>
+<hr>
+
+<div class="user-info">
+    <p><b>Created by:</b></p>
+    
+<div class="user-more-info">
+    <a href="/api/v1/user/<%= test.user._id %>">
+        <img src="<%= test.user.avatar.url %>" alt="">
+    </a>
+<p>@<%= test.user.username %></p>
+<p><%= test.user.profession %></p>
+<p><b>Created at:</b> <%= test.date %></p>
+</div>
+</div>
+</div>
+<br>
+<br>
+<br>
+<hr>
+
+<%- include('../layout/footer.ejs') %>

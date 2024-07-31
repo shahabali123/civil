@@ -1,0 +1,25 @@
+<%- include('../layout/header.ejs') %>
+<div class="avatar">
+    <img src="<%= user.avatar.url %>" alt="">
+</div>
+<div class="other-user-detail">
+    <h1><%= user.username %></h1>
+<p><%= user.email %></p>
+<p><b>Role:</b> <%= user.role %></p>
+</div>
+<hr>
+<%if(userTests){%>
+    <h1>Tests posted by <%= user.username %></h1>
+    <br>
+    <div class="user-tests">
+
+        <%for(test of userTests){%>
+            <a href="/api/v1/test/<%= test._id %>" class="test-card" style="color: orange;">
+                        <h4><%= test.name %></h4>
+            </a>
+            <% } %>
+
+    </div>
+<% } %>
+
+<%- include('../layout/footer.ejs') %>

@@ -1,0 +1,39 @@
+.home-title{
+    font-family: sans-serif;
+    color: orange;
+    font-weight: 600;
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.703);
+}
+.cards-container{
+    display: flex;
+    margin: 2vmax auto;
+    gap: 2vmax;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    max-width: 100%;
+    transition: 1s;
+}
+.test-card{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    font-family: Roboto;
+    transition: all 0.5s;
+    padding-bottom: 0.5vmax;
+    max-height: 21rem;
+    overflow: scroll;
+    >div{
+        >div{
+            >.introduction{
+                height: 5vh;
+                overflow: scroll;
+            }
+        }
+    }
+    &:hover{
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.374);
+        transform: translateY(-0.6vmax);
+    }
+}

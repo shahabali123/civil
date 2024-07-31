@@ -1,0 +1,37 @@
+<%- include('../layout/header.ejs') %>
+<h1 class="home-title">All Users</h1>
+<div class="dash-users">
+    
+    <% for( user of users ) { %>
+        <a href="/api/v1/user/<%= user._id %>">
+            <div class="card" style="width: 18rem;">
+                <img src="<%= user.avatar.url %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%= user.username %></h5>
+                  <p class="card-text"><b>Profession:</b> <%= user.profession %></p>
+                  <p class="card-text"><b>Email:</b> <%= user.email %></p>
+                  <p><b>Joining date: </b><%= new Date(user.createdAt).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></p>
+                </div>
+              </div>
+        </a>
+    <% } %>
+</div>
+<hr>
+<h1 class="home-title">All Tests</h1>
+<div class="dash-users">
+    <% for( test of tests ) { %>
+        <a href="/api/v1/test/<%= test._id %>">
+            <div class="card" style="width: 18rem;">
+                <img src="<%= test.image.url %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%= test.name %></h5>
+                  <p class="card-text"><b>Category:</b> <%= test.category %></p>
+                  <p class="card-text"><b>Created by:</b> <%= test.user.username %></p>
+                  <p><b>Created at: </b><%= new Date(test.date).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></p>
+                </div>
+              </div>
+        </a>
+    <% } %>
+</div>
+<hr>
+<%- include('../layout/footer.ejs') %>

@@ -1,0 +1,42 @@
+<%- include('../layout/header.ejs') %>
+
+<h3>Log in to your Account: </h3>
+
+    <form action="/api/v1/login" method="post" novalidate class="needs-validation">
+        <div>
+            <label 
+            for="username" class="form-label">Enter User name</label>
+            <input 
+            type="text" 
+            required 
+            placeholder="User Name" 
+            name="username" 
+            id="username" 
+            class="form-control">
+            <div class="valid-feedback">&#10003;</div>
+            <div class="invalid-feedback">User Name is required.</div>
+        </div>
+
+        <br>
+
+        <div>
+            <label 
+            for="password" class="form-label">password</label>
+            <input 
+            type="password" 
+            required 
+            placeholder="password" 
+            name="password" 
+            id="password" 
+            class="form-control">
+            <div class="valid-feedback">&#10003;</div>
+            <div class="invalid-feedback">password is required.</div>
+        </div>
+
+        <br>
+
+        <button class="btn btn-success">Login</button>
+
+    </form>
+
+<%- include('../layout/footer.ejs') %>

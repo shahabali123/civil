@@ -1,0 +1,17 @@
+.avatar{
+    >img{
+        width: 100vmin;
+        max-width: 76vw;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+}
+
+@media screen and(max-width: 600px) {
+    .avatar{
+        >img{
+            width: 100%;
+            max-width: 96vw;
+        }
+    }
+}
