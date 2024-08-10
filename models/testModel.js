@@ -16,7 +16,6 @@ const testSchema = mongoose.Schema({
     },
     introduction:{
         type: String,
-        trim: true
     },
     equipments:[{
         type: String,
@@ -37,11 +36,9 @@ const testSchema = mongoose.Schema({
     }],
     formula:{
         type: String,
-        trim: true
     },
     result:{
         type: String,
-        trim: true
     },
     date:{
         type: Date,

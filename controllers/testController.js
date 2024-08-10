@@ -25,7 +25,7 @@ Math.ceil(productCount/resultPerPage);
         req.flash('success', 'Please sign in to explore more features')
     }
 
-    res.render("./pages/home.ejs", {allTests, currUser, });
+    res.render("./pages/home.ejs", {showHero: true, allTests, currUser, });
 };
 
 exports.getSingleTest = wrapAsync(async(req, res)=>{
@@ -37,12 +37,12 @@ exports.getSingleTest = wrapAsync(async(req, res)=>{
     }
     // populating user in the test
     await test.populate('user');
-    res.render('./test/singleTest.ejs', {test});
+    res.render('./test/singleTest.ejs', {test, showHero: false});
 })
 
 
 exports.getCreateTest = (req, res)=>{
-    res.render('./test/createTest.ejs')
+    res.render('./test/createTest.ejs', {showHero: false})
 }
 
 exports.createNewTest = wrapAsync(async(req, res)=>{
@@ -64,7 +64,7 @@ exports.createNewTest = wrapAsync(async(req, res)=>{
 exports.getUpdateTestForm = wrapAsync(async(req, res)=>{
     const id = req.params.id;
     const test = await Test.findById(id);
-    res.render('./test/updateTest.ejs', {test});
+    res.render('./test/updateTest.ejs', {test, showHero: false});
 })
 
 exports.postUpdatedTest = wrapAsync(async(req, res)=>{

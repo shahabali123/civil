@@ -5,7 +5,7 @@
          style='border: 3.5px solid #3b5998'
         <% } %>></a>
       <% } else {%>
-        <a class="navbar-brand" href="#">CIVIL</a>
+        <a class="navbar-brand" href="/api/v1/tests">CIVIL</a>
         <% }%>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -47,7 +47,9 @@
         </ul>
         <form class="d-flex" role="search" action="/api/v1/tests">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <a href="#all-tests">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </a>
         </form>
       </div>
     </div>

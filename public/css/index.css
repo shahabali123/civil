@@ -15,8 +15,8 @@ body{
 }
 .main-container{
     padding: 3vmin 10vmax;
-    background: #000000df;
-    color: rgb(240, 255, 255);
+    /* background: #000000df;
+    color: rgb(240, 255, 255); */
     height: 100%;
     min-height: 100vh;
     max-width: 100%;

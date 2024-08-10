@@ -1,0 +1,41 @@
+
+
+
+<section class="ezy__epgrid1 dark" id="all-tests">
+    <div class="container">
+      <h2 class="ezy__epgrid1-heading text-center">Lab Tests</h2>
+      <!-- row start -->
+      <div class="row ezy__epgrid1-row text-center justify-content-xl-center mt-5">
+        <!-- card start -->
+        <% for( test of allTests ) { %>
+          <div class="col-md-6 col-lg-4 col-xl-3 px-2 my-2">
+            <div class="card ezy__epgrid1-card position-relative p-2">
+              <a href="#!">
+                <div class="ezy__epgrid1-fav-icon"><i class="fas fa-heart"></i></div>
+              </a>
+              <div class="card-body">
+                <div class="ezy__epgrid1-card-img d-flex justify-content-center align-items-center h-100 px-4">
+                  <a href="#!">
+                    <img src="<%= test.image.url %>" alt="..." />
+                  </a>
+                </div>
+              </div>
+              <div class="card-body h-100 pt-0 text-start">
+                <a href="#!">
+                  <h5 class="ezy__epgrid1-title"><%= test.name %></h5>
+                </a>
+                <h5 class="ezy__epgrid1-price my-2"><%= test.category %></h5>
+                <div class="ezy__epgrid1-details d-flex justify-content-between align-items-center">
+                  <!-- <h5 class="ezy__epgrid1-ratings"><i class="fas fa-star me-1"></i>4.6</h5> -->
+                  <a href="/api/v1/test/<%= test._id %>">
+                    <h5 class="ezy__epgrid1-cart"><i class="fa-solid fa-angles-right"></i></h5>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        <!-- card end -->
+        
+    </div>
+  </section>

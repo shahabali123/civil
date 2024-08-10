@@ -15,12 +15,20 @@
     <link rel="stylesheet" href="/css/showUser.css">
     <link rel="stylesheet" href="/css/footer.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/hero.css">
+    <link rel="stylesheet" href="/css/testCards.css">
+    <link rel="stylesheet" href="/css/userForm.css">
 
 
 </head>
 <body>
     
 <%- include('./navbar.ejs') %>
+<% if (showHero) { %>
+    <%- include('./hero.ejs') %>
+<% } %>
 
 
 

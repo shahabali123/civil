@@ -1,37 +1,68 @@
 <%- include('../layout/header.ejs') %>
 <h1 class="home-title">All Users</h1>
 <div class="dash-users">
-    
-    <% for( user of users ) { %>
-        <a href="/api/v1/user/<%= user._id %>">
-            <div class="card" style="width: 18rem;">
-                <img src="<%= user.avatar.url %>" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><%= user.username %></h5>
-                  <p class="card-text"><b>Profession:</b> <%= user.profession %></p>
-                  <p class="card-text"><b>Email:</b> <%= user.email %></p>
-                  <p><b>Joining date: </b><%= new Date(user.createdAt).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></p>
-                </div>
-              </div>
-        </a>
+
+
+<!-- Bootstrap tables -->
+<table class="table table-dark table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User name</th>
+      <th scope="col">Profession</th>
+      <th scope="col">Joining date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for( let index = 0; index < users.length; index++ ) { %>
+      <tr>  
+          <th scope="row"><%= index+1 %></th>
+    <td>      <a href="/api/v1/user/<%= users[index]._id %>">
+      <%= users[index].username %> </a></td>
+    <td><%= users[index].profession %></td>
+    <td><%= new Date(users[index].createdAt).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></td>
+  </tr>
     <% } %>
-</div>
+    
+  </tbody>
+</table>
+
+
 <hr>
 <h1 class="home-title">All Tests</h1>
-<div class="dash-users">
-    <% for( test of tests ) { %>
-        <a href="/api/v1/test/<%= test._id %>">
-            <div class="card" style="width: 18rem;">
-                <img src="<%= test.image.url %>" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><%= test.name %></h5>
-                  <p class="card-text"><b>Category:</b> <%= test.category %></p>
-                  <p class="card-text"><b>Created by:</b> <%= test.user.username %></p>
-                  <p><b>Created at: </b><%= new Date(test.date).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></p>
-                </div>
-              </div>
-        </a>
-    <% } %>
+<br>
+
+<div id="dash-tests">
+  <table class="table table-dark table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Category</th>
+        <th scope="col">Posted by</th>
+        <th scope="col">Posted at</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for( let index = 0; index < tests.length; index++ ) { %>
+        <tr>  
+            <th scope="row"><%= index+1 %></th>
+      <td>      <a href="/api/v1/test/<%= tests[index]._id %>">
+        <%= tests[index].name %> </a></td>
+        <td><%= tests[index].category %></td>
+      <td><%= tests[index].user.username %></td>
+      <td><%= new Date(tests[index].date).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></td>
+    </tr>
+      <% } %>
+      
+    </tbody>
+  
+      
+    </tbody>
+  </table>
 </div>
+
+
+
 <hr>
 <%- include('../layout/footer.ejs') %>

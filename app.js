@@ -11,6 +11,8 @@ const MongoStore = require('connect-mongo')
 const flash = require('connect-flash')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
+
+
 const connectDatabase = require('./config/database');
 const User = require('./models/userModel')
 const test = require('./routes/testRoutes');
@@ -32,7 +34,6 @@ app.set('views', path.join(__dirname, "views"))
 app.use(express.static(path.join(__dirname, "public")))
 app.use(flash());
 connectDatabase();
-
 
 
 // _______________________________________
@@ -80,6 +81,7 @@ app.use((req, res, next)=>{
     res.locals.success  = req.flash("success");
     res.locals.error = req.flash("error")
     res.locals.currUser = req.user;
+    res.locals.showHero = true;
     next();
 });
 

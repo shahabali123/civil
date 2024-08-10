@@ -8,7 +8,7 @@
 <p><b>Role:</b> <%= user.role %></p>
 </div>
 <hr>
-<%if(userTests){%>
+<%if(userTests && userTests.length){%>
     <h1>Tests posted by <%= user.username %></h1>
     <br>
     <div class="user-tests">

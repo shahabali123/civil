@@ -6,7 +6,7 @@ const Test = require('../models/testModel')
 
 
 exports.getRegistrationForm = (req, res)=>{
-    res.render('./user/register.ejs')
+    res.render('./user/register.ejs', {showHero: false})
 }
 
 
@@ -29,7 +29,7 @@ exports.registerUser = wrapAsync(async(req, res)=>{
 
 
 exports.getLoginForm = (req, res)=>{
-    res.render('./user/login.ejs')
+    res.render('./user/login.ejs', {showHero: false})
 }
 
 
@@ -53,5 +53,5 @@ module.exports.getSingleUser = wrapAsync(async(req, res)=>{
     if(!user){
         req.flash('error', 'User not found')
     }
-    res.render('./user/showUser.ejs', {user, userTests})
+    res.render('./user/showUser.ejs', {user, userTests, showHero: false})
 })

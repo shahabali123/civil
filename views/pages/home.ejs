@@ -1,20 +1,4 @@
 <%- include('../layout/header.ejs') %>
-  <a href="/api/v1/tests">
-    <h1 class="home-title">Laboratory Tests</h1>
-  </a>
-    <hr>
-    <div class="cards-container">
-        <% for( test of allTests ) { %>
-            <a href="/api/v1/test/<%= test._id %>" class="test-card">
-            <div class="card" style="width: 18rem; height: 21rem;">
-                <img src="<%= test.image.url %>" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><b><%= test.name %></b></h5>
-                  <p class="card-text"><%= test.category %></p>
-                  <p class="card-text introduction"><%= test.introduction %></p>
-                </div>
-              </div>
-            </a>
-        <% } %>
-    </div>
+  
+    <%- include('../components/testCards.ejs') %>
 <%- include('../layout/footer.ejs') %>
