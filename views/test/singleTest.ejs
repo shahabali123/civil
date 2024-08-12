@@ -73,7 +73,7 @@
 
 <br>
 <hr>
-           <!-- ____________ -->
+           <!-- _____More test in same category_______ -->
 
           </div>
         </div>
@@ -87,11 +87,13 @@
 
               <% for( t of similarTests ) { %>
                 <div class="ezy__blogdetails2-item d-flex justify-content-between align-items-start">
-                    <img
+                    <a href="/api/v1/test/<%= t._id %>">
+                      <img
                       src="<%= t.image.url %>"
                       alt=""
                       class="img-fluid rounded right-side-image"
                     />
+                    </a>
                     <div class="ms-3">
                       <h6><%= t.name %></h6>
                       <div class="d-flex flex-wrap opacity-50">
