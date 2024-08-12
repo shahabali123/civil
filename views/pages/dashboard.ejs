@@ -1,10 +1,8 @@
 <%- include('../layout/header.ejs') %>
-<h1 class="home-title">All Users</h1>
-<div class="dash-users">
-
 
 <!-- Bootstrap tables -->
-<table class="table table-dark table-striped table-hover">
+<table class="table table-danger table-striped table-hover caption-top">
+  <caption>List of All Users</caption>
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -29,11 +27,11 @@
 
 
 <hr>
-<h1 class="home-title">All Tests</h1>
 <br>
 
-<div id="dash-tests">
-  <table class="table table-dark table-striped table-hover">
+<div id="dash-tests table-responsive-sm">
+  <table class="table table-success table-striped table-hover caption-top ">
+    <caption>List of All Tests</caption>
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -64,5 +62,4 @@
 
 
 
-<hr>
 <%- include('../layout/footer.ejs') %>

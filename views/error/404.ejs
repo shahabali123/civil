@@ -1,9 +1,30 @@
 <%- include('../layout/header.ejs') %>
 
-<div class="notfound-message">
-    <h1>Page not found</h1>
-    <p>Sorry, we couldn't find the page you're looking for.</p>
-    <a href="/api/v1/tests">Go to the home page</a>
-</div>
+<section class="ezy__httpcodes4">
+    <!-- svg -->
+    <svg class="position-absolute top-0 end-0 d-none d-sm-block" width="544" height="495" viewBox="0 0 544 495"
+      fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="336.426" y="-167.539" width="175" height="526" rx="87.5" transform="rotate(39.7614 336.426 -167.539)"
+        fill="#FFC107" />
+      <rect x="523.426" y="-89.5391" width="175" height="526" rx="87.5" transform="rotate(39.7614 523.426 -89.5391)"
+        fill="#2F80ED" />
+      <rect x="721.426" y="-21.5391" width="175" height="526" rx="87.5" transform="rotate(39.7614 721.426 -21.5391)"
+        fill="#FF774D" />
+    </svg>
+  
+    <!-- container -->
+    <div class="container">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-12 col-lg-5 text-center text-lg-start mb-5 mb-lg-0">
+          <h2 class="ezy__httpcodes4-heading mb-4">404</h2>
+          <p class="ezy__httpcodes4-sub-heading">Something Missing ,Page not found!</p>
+          <a href="/api/v1/tests" type="button" class="btn btn-primary border-0 mt-4">Go to home page</a>
+        </div>
+        <div class="col-12 col-lg-7">
+          <img src="/photos/404.png" alt="" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </section>
 
 <%- include('../layout/footer.ejs') %>

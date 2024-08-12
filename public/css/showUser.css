@@ -15,3 +15,380 @@
         }
     }
 }
+
+
+/* ________ */
+.ezy__header42 {
+    /* Bootstrap variables */
+    --bs-body-bg: rgb(255, 255, 255);
+    --bs-body-bg-invert: rgb(246, 246, 246);
+  
+    /* Easy Frontend variables */
+    --ezy-theme-color: rgb(13, 110, 253);
+    --ezy-theme-color-rgb: 13, 110, 253;
+    --ezy-body-color-invert: rgb(246, 246, 246);
+  
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    overflow: hidden;
+    position: relative;
+    padding: 100px 0;
+    z-index: 1;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (min-width: 768px) {
+    .ezy__header42 {
+      padding: 150px 0;
+    }
+  }
+  
+  /* Gray Block Style */
+  .gray .ezy__header42,
+  .ezy__header42.gray {
+    /* Bootstrap variables */
+    --bs-body-bg: rgb(246, 246, 246);
+  
+    /* Easy Frontend variables */
+    --ezy-body-color-invert: rgb(255, 255, 255);
+  }
+  
+  /* Dark Gray Block Style */
+  .dark-gray .ezy__header42,
+  .ezy__header42.dark-gray {
+    /* Bootstrap variables */
+    --bs-body-color: #ffffff;
+    --bs-body-bg: rgb(30, 39, 53);
+  
+    /* Easy Frontend variables */
+    --ezy-body-color-invert: rgb(11, 23, 39);
+  }
+  
+  /* Dark Block Style */
+  .dark .ezy__header42,
+  .ezy__header42.dark {
+    /* Bootstrap variables */
+    --bs-body-color: #ffffff;
+    --bs-body-bg: rgb(11, 23, 39);
+  
+    /* Easy Frontend variables */
+    --ezy-body-color-invert: rgb(30, 39, 53);
+  }
+  
+  .ezy__header42-heading {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+  }
+  
+  @media (min-width: 991px) {
+    .ezy__header42-heading {
+      font-size: 75px;
+    }
+  }
+  
+  .ezy__header42-sub-heading {
+    font-size: 17px;
+    line-height: 1.8;
+    opacity: 0.8;
+  }
+  
+  .ezy__header42-btn {
+    padding: 10px 30px;
+    font-weight: 500;
+    color: #fff;
+    background-color: var(--ezy-theme-color);
+  }
+  .ezy__header42-btn:hover {
+    color: #fff;
+    background-color: rgba(var(--ezy-theme-color-rgb));
+  }
+  
+  .ezy__header42-img {
+    box-shadow: -50px 0 0 0 var(--ezy-body-color-invert);
+    border-radius: 50%;
+  }
+  
+  .ezy__header42-shape-two {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+  }
+  
+  .ezy__header42-shape-four {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+  }
+  
+  .ezy__header42-shape-six {
+    position: absolute;
+    right: 0;
+    top: 10%;
+  }
+  .ezy__header42-shape-seven {
+    left: 0;
+    z-index: -2;
+  }
+  @media (min-width: 991px) {
+    .ezy__header42-shape-seven {
+      left: -150px;
+    }
+  }
+  
+  .ezy__header42-bg-shape {
+    position: absolute;
+    top: -15%;
+    right: -15%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background-color: var(--ezy-body-color-invert);
+    z-index: -10;
+  }
+
+
+
+
+  /* all tests posted by this user */
+  .ezy__pricing12 {
+    /* Bootstrap variables */
+    --bs-body-bg: rgb(255, 255, 255);
+  
+    /* Easy Frontend variables */
+    --ezy-theme-color: rgb(13, 110, 253);
+    --ezy-theme-color-rgb: 13, 110, 253;
+    --ezy-play-btn-bg: 255, 255, 255;
+    --ezy-card-bg: #fff;
+    --ezy-overlay-color: rgba(255, 255, 255, 0.3);
+  
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    overflow: hidden;
+    padding: 60px 0;
+    position: relative;
+    z-index: 1;
+  }
+  
+  @media (min-width: 768px) {
+    .ezy__pricing12 {
+      padding: 100px 0;
+    }
+  }
+  
+  /* Gray Block Style */
+  .gray .ezy__pricing12,
+  .ezy__pricing12.gray {
+    /* Bootstrap variables */
+    --bs-body-bg: rgb(246, 246, 246);
+  
+    /* Easy Frontend variables */
+    --ezy-card-bg: #ffffff;
+    --ezy-overlay-color: rgba(246, 246, 246, 0.3);
+  }
+  
+  /* Dark Gray Block Style */
+  .dark-gray .ezy__pricing12,
+  .ezy__pricing12.dark-gray {
+    /* Bootstrap variables */
+    --bs-body-color: #ffffff;
+    --bs-body-bg: rgb(30, 39, 53);
+  
+    /* Easy Frontend variables */
+    --ezy-card-bg: rgb(11, 23, 39);
+    --ezy-overlay-color: rgba(30, 39, 53, 0.3);
+  }
+  
+  /* Dark Block Style */
+  .dark .ezy__pricing12,
+  .ezy__pricing12.dark {
+    /* Bootstrap variables */
+    --bs-body-color: #ffffff;
+    --bs-body-bg: rgb(11, 23, 39);
+  
+    /* Easy Frontend variables */
+    --ezy-card-bg: rgb(30, 39, 53);
+    --ezy-overlay-color: rgba(11, 23, 39, 0.3);
+  }
+  
+  .ezy__pricing12-heading {
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 1;
+  }
+  
+  @media (min-width: 768px) {
+    .ezy__pricing12-heading {
+      font-size: 45px;
+    }
+  }
+  
+  .ezy__pricing12-sub-heading {
+    font-size: 18px;
+    line-height: 25px;
+    opacity: 0.8;
+  }
+  
+  /* overlay */
+  .ezy__pricing12-bg-holder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(https://cdn.easyfrontend.com/pictures/pricing/pricing_12.png);
+    background-position: center;
+    background-repeat: repeat;
+    z-index: -1;
+    opacity: 0.4;
+  }
+  
+  .light .ezy__pricing12 .ezy__pricing12-bg-holder,
+  .ezy__pricing12.light .ezy__pricing12-bg-holder,
+  .gray .ezy__pricing12 .ezy__pricing12-bg-holder,
+  .ezy__pricing12.gray .ezy__pricing12-bg-holder {
+    opacity: 0.1;
+  }
+  
+  /* countdown */
+  .ezy__pricing12-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: var(--ezy-theme-color);
+    color: #fff;
+    border-radius: 10px;
+  }
+  
+  .ezy__pricing12-box h5 {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+  
+  @media (min-width: 568px) {
+    .ezy__pricing12-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80px;
+      height: 80px;
+      background-color: var(--ezy-theme-color);
+      color: #fff;
+      border-radius: 10px;
+    }
+  
+    .ezy__pricing12-box h5 {
+      font-size: 35px;
+    }
+  }
+  
+  .ezy__pricing12-countdown p {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+  
+  /* card */
+  .ezy__pricing12 .card {
+    background-color: var(--ezy-card-bg);
+    border: 0;
+  }
+  
+  .ezy__pricing12 .card a {
+    text-decoration: none;
+    color: var(--bs-body-color);
+    border-color: var(--ezy-theme-color);
+    cursor: pointer;
+  }
+  
+  .ezy__pricing12 .card a:hover {
+    color: var(--bs-body-color);
+    background-color: var(--ezy-theme-color);
+    border-color: var(--ezy-theme-color);
+  }
+  
+  .ezy__pricing12 .card-text {
+    color: var(--bs-body-color);
+    font-size: 15px;
+    opacity: 0.8;
+  }
+  
+  .ezy__pricing12 .card-title {
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  
+  .ezy__pricing12 .card h4 {
+    color: var(--bs-body-color);
+    font-size: 16px;
+  }
+  
+  .ezy__pricing12 .btn-outline {
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  
+  .ezy__pricing12 .btn-outline:hover {
+    color: #fff !important;
+  }
+  
+  /* play btn */
+  .ezy__pricing12-play-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    background-color: rgba(var(--ezy-play-btn-bg), 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .ezy__pricing12-play-btn:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(var(--ezy-play-btn-bg), 0.2);
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+  }
+  
+  /* discount */
+  .ezy__pricing12-discount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: -25px;
+    right: 10px;
+    background-color: var(--ezy-card-bg);
+    padding: 15px;
+    border-radius: 50%;
+  }
+  
+  .ezy__pricing12-discount-price {
+    text-align: center;
+    line-height: 1;
+    font-size: 20px;
+    color: var(--ezy-theme-color);
+  }
+  
+  .ezy__pricing12-discount-price span {
+    font-size: 16px;
+    color: var(--bs-body-color);
+  }

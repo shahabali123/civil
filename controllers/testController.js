@@ -25,24 +25,26 @@ Math.ceil(productCount/resultPerPage);
         req.flash('success', 'Please sign in to explore more features')
     }
 
-    res.render("./pages/home.ejs", {showHero: true, allTests, currUser, });
+    res.render("./pages/home.ejs", {allTests, currUser, });
 };
 
 exports.getSingleTest = wrapAsync(async(req, res)=>{
     const id = req.params.id;
     const test = await Test.findById(id);
+    
     if(!test){
         req.flash('error', 'Test not found')
         return res.redirect('/api/v1/tests')
     }
-    // populating user in the test
+    const similarTests = await Test.find({category: test.category})
+    await Promise.all(similarTests.map(t => t.populate('user')));    // populating user in the test
     await test.populate('user');
-    res.render('./test/singleTest.ejs', {test, showHero: false});
+    res.render('./test/singleTest.ejs', {test, similarTests});
 })
 
 
 exports.getCreateTest = (req, res)=>{
-    res.render('./test/createTest.ejs', {showHero: false})
+    res.render('./test/createTest.ejs')
 }
 
 exports.createNewTest = wrapAsync(async(req, res)=>{
@@ -64,7 +66,7 @@ exports.createNewTest = wrapAsync(async(req, res)=>{
 exports.getUpdateTestForm = wrapAsync(async(req, res)=>{
     const id = req.params.id;
     const test = await Test.findById(id);
-    res.render('./test/updateTest.ejs', {test, showHero: false});
+    res.render('./test/updateTest.ejs', {test});
 })
 
 exports.postUpdatedTest = wrapAsync(async(req, res)=>{

@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid">
       <% if (currUser) { %>
         <a class="navbar-brand" href="/api/v1/user/<%= currUser._id %>"><img src="<%= currUser.avatar.url %>" alt="" <% if (currUser.role === 'admin') { %>
-         style='border: 3.5px solid #3b5998'
+         style='border: 3.5px solid yellow'
         <% } %>></a>
       <% } else {%>
         <a class="navbar-brand" href="/api/v1/tests">CIVIL</a>
@@ -46,7 +46,7 @@
           </li>
         </ul>
         <form class="d-flex" role="search" action="/api/v1/tests">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+          <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search" name="keyword">
           <a href="#all-tests">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </a>

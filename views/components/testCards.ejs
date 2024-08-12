@@ -1,41 +1,40 @@
 
 
+  <%if(allTests && allTests.length){%>
+    <h1>List of all tests</h1>
+    <br>
 
-<section class="ezy__epgrid1 dark" id="all-tests">
+<section class="ezy__pricing12" id="user-tests">
+    <div class="ezy__pricing12-bg-holder"></div>
     <div class="container">
-      <h2 class="ezy__epgrid1-heading text-center">Lab Tests</h2>
-      <!-- row start -->
-      <div class="row ezy__epgrid1-row text-center justify-content-xl-center mt-5">
-        <!-- card start -->
-        <% for( test of allTests ) { %>
-          <div class="col-md-6 col-lg-4 col-xl-3 px-2 my-2">
-            <div class="card ezy__epgrid1-card position-relative p-2">
-              <a href="#!">
-                <div class="ezy__epgrid1-fav-icon"><i class="fas fa-heart"></i></div>
-              </a>
-              <div class="card-body">
-                <div class="ezy__epgrid1-card-img d-flex justify-content-center align-items-center h-100 px-4">
-                  <a href="#!">
-                    <img src="<%= test.image.url %>" alt="..." />
-                  </a>
+      <div class="row justify-content-center text-center">
+      </div>
+      <!-- cards starts-->
+      <div class="row justify-content-center">
+      <%for(test of allTests){%>
+            <div class="col-12 col-sm-6 col-lg-4 mt-4 mt-lg-5">
+                <div class="card">
+                  <div class="position-relative">
+                    <img src="<%= test.image.url %>" class="card-img-top" alt="..." />
+                  </div>
+                  <div class="card-body">
+                    <a>
+                      <p class="card-text mb-2"><%= test.category %></p>
+                    </a>
+                    <a>
+                      <h5 class="card-title mb-2"><%= test.name %></h5>
+                    </a>
+                    <p class="card-text"><%= test.introduction.substring(0, 56) + (test.introduction.length > 56 ? '...' : '') %></p>
+                    <div class="d-flex justify-content-between mb-2">
+                      <div class="d-flex align-items-center">
+                      </div>
+                      <a href="/api/v1/test/<%= test._id %>" class="btn btn-outline d-flex align-items-center">See in detail</a>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="card-body h-100 pt-0 text-start">
-                <a href="#!">
-                  <h5 class="ezy__epgrid1-title"><%= test.name %></h5>
-                </a>
-                <h5 class="ezy__epgrid1-price my-2"><%= test.category %></h5>
-                <div class="ezy__epgrid1-details d-flex justify-content-between align-items-center">
-                  <!-- <h5 class="ezy__epgrid1-ratings"><i class="fas fa-star me-1"></i>4.6</h5> -->
-                  <a href="/api/v1/test/<%= test._id %>">
-                    <h5 class="ezy__epgrid1-cart"><i class="fa-solid fa-angles-right"></i></h5>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <% } %>
-        <!-- card end -->
-        
+        <% } %>
+      <!-- cards ends-->
     </div>
   </section>
+  <% } %>
