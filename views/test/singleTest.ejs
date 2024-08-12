@@ -11,12 +11,14 @@
           <div class="d-flex justify-content-between my-5 me-5">
             <div class="d-flex align-items-center">
               <div class="me-2">
-                <img
+                <a href="/api/v1/user/<%= test.user._id %>">
+                  <img
                   src="<%= test.user.avatar.url %>"
                   alt=""
                   class="img-fluid rounded-circle border img-thumbnail"
                   width="47"
                 />
+                </a>
               </div>
               <div>
                 <p class="mb-0">By<b> <%= test.user.username %> </b></p>
