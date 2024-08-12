@@ -2,6 +2,7 @@ const User = require('../models/userModel')
 const wrapAsync = require('../middlewares/wrapAsync')
 const passport = require('passport')
 const Test = require('../models/testModel')
+const sendEmail = require('../utils/sendEmail');
 
 
 
@@ -24,6 +25,22 @@ exports.registerUser = wrapAsync(async(req, res)=>{
         if(err) return next(err);
     })
     req.flash('success', 'Account created successfully');
+
+    // send mail to admin about new user registration
+    const newUserUrl = `${req.protocol}://${req.get('host')}/api/v1/${registerUser._id}`
+    try {
+        await sendEmail({
+            email: process.env.ADMIN_MAIL,
+            subject: 'New User Registered',
+            message: `New user ${registerUser.username} (${registerUser.email}) has been registered.
+            Their profession is: ${registerUser.profession}
+            You can view the user details here: <a href="${newUserUrl}">${newUserUrl}</a>`
+        })
+    } catch (error) {
+        console.log(error);
+    }
+    
+
     res.redirect('/api/v1/tests');
 })
 

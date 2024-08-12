@@ -129,9 +129,11 @@
               </p>
             </div>
           </div>
-          <a href="#user-tests">
-            <button  class="btn ezy__header42-btn rounded-pill">Explore test posted by <%= user.username %></button>
-          </a>
+          <%if(userTests && userTests.length){%>
+            <a href="#user-tests">
+              <button  class="btn ezy__header42-btn rounded-pill">Explore test posted by <%= user.username %></button>
+            </a>
+          <% } %>
         </div>
         <div class="col-12 col-lg-5 position-relative text-center">
           <!-- shape seven -->

@@ -2,6 +2,7 @@ const Test = require('../models/testModel');
 const wrapAsync = require('../middlewares/wrapAsync');
 const ApiFeatures = require('../utils/apifeatures');
 const { cloudinary } = require('../config/cloudConfig');
+const sendEmail = require('../utils/sendEmail')
 
 
 exports.getAllTests = async(req, res)=>{
@@ -28,6 +29,8 @@ Math.ceil(productCount/resultPerPage);
     res.render("./pages/home.ejs", {allTests, currUser, });
 };
 
+
+
 exports.getSingleTest = wrapAsync(async(req, res)=>{
     const id = req.params.id;
     const test = await Test.findById(id);
@@ -43,9 +46,14 @@ exports.getSingleTest = wrapAsync(async(req, res)=>{
 })
 
 
+
 exports.getCreateTest = (req, res)=>{
     res.render('./test/createTest.ejs')
 }
+
+
+
+
 
 exports.createNewTest = wrapAsync(async(req, res)=>{
     const test = new Test(req.body);
@@ -59,9 +67,36 @@ exports.createNewTest = wrapAsync(async(req, res)=>{
     let user = req.user._id;
     test.user = user;
     test.save();
-    req.flash('success', 'Test created successfully')
+    req.flash('success', 'Test created successfully');
+
+
+    const newTestUrl = `${req.protocol}://${req.get("host")}/api/v1/test/${test._id}`
+    try {
+        await sendEmail({
+            email: process.env.ADMIN_MAIL,
+            subject: `New Test Posted by ${req.user.username}`,
+            message: `A new test has been posted on Civil 2 by ${req.user.username}.
+          
+          **Test Title:** ${test.name}
+          
+          **Test Category:** ${test.category}
+          
+          **View the test:** ${newTestUrl}
+          
+          Please note that this email is automatically generated and replies are not monitored. 
+          `
+          });
+          
+    } catch (error) {
+        console.log(error)
+    }
+
     res.redirect('/api/v1/tests');
 })
+
+
+
+
 
 exports.getUpdateTestForm = wrapAsync(async(req, res)=>{
     const id = req.params.id;

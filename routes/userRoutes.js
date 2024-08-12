@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
+const sendEmail = require('../utils/sendEmail')
 
 const {storage, cloudinary} = require('../config/cloudConfig')
 const multer = require('multer');
@@ -32,8 +33,23 @@ router.post('/login',
       failureRedirect: '/api/v1/login',
       failureFlash: true,
     }),
-    (req, res) => {
+    async(req, res) => {
       req.flash('success', `Welcome back!`);
+      // Send email to user on successful login
+    try {
+      await sendEmail({
+        email: req.user.email, // Send to the logged-in user's email
+        subject: 'Welcome Back to Civil 2!',
+        message: `Hi ${req.user.username},
+
+Welcome back to Civil 2! We're glad you're here.
+
+Thanks,
+The Civil 2 Team`
+      });
+    } catch (error) {
+      console.error('Error sending login email:', error);
+    }
       res.redirect('/api/v1/tests'); 
     }
 );
