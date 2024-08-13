@@ -1,0 +1,141 @@
+.ezy__careers15 {
+    /* Bootstrap variables */
+    --bs-body-color: #28303b;
+    --bs-body-bg: #fff;
+    
+    /* easy frontend variables */
+    --ezy-theme-color: rgb(13, 110, 253);
+    --ezy-theme-color-rgb: 13, 110, 253;
+    --ezy-card-bg:rgb(255, 255, 255);
+    --ezy-box-shadow:  0px 6px 44px rgba(173, 174, 197, 0.2);
+    --ezy-border-color: rgba(0, 0, 0, 0.2);
+    
+    
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    padding: 60px 0;
+    }
+    
+    @media (min-width: 768px) {
+    .ezy__careers15 {
+      padding: 100px 0;
+    }
+    }
+    
+    /* Gray Block Style */
+    .gray .ezy__careers15,
+    .ezy__careers15.gray {
+    /* Bootstrap variables */
+    --bs-body-bg: rgb(246, 246, 246);
+    
+    /* easy frontend variables */
+    --ezy-card-bg:rgb(255, 255, 255);
+    }
+    
+    /* Dark Gray Block Style */
+    .dark-gray .ezy__careers15,
+    .ezy__careers15.dark-gray {
+    /* Bootstrap variables */
+    --bs-body-color: rgb(241, 241, 241);
+    --bs-body-bg: rgb(30, 39, 53);
+    
+    /* easy frontend variables */
+    --ezy-border-color: rgba(100, 100, 100, 0.3);
+    --ezy-box-shadow:  0px 6px 44px rgba(0, 0, 0, 0.2);
+    --ezy-card-bg:rgb(11, 23, 39);    
+    }
+    
+    /* Dark Block Style */
+    .dark .ezy__careers15,
+    .ezy__careers15.dark {
+    /* Bootstrap variables */
+    --bs-body-color: rgb(255, 255, 255);
+    --bs-body-bg: rgb(11, 23, 39);
+    
+    /* easy frontend variables */
+    --ezy-border-color: rgba(100, 100, 100, 0.3);
+    --ezy-box-shadow:  0px 6px 44px rgba(0, 0, 0, 0.2);
+    --ezy-card-bg:rgb(30, 39, 53);
+    }
+    
+    /* heading and sub-heading */
+    .ezy__careers15-heading {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--bs-body-color);
+    }
+    @media (min-width: 991px) {
+    .ezy__careers15-heading {
+      font-size: 40px;
+    }
+    }
+    
+    .ezy__careers15-sub-heading {
+    color: var(--bs-body-color);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 25px;
+    opacity: 0.8;
+    }
+    /* card */
+    .ezy__careers15-card {
+    color: var(--bs-body-color);
+    background-color: var(--ezy-card-bg);
+    box-shadow: var(--ezy-box-shadow);
+    height: 100% !important;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    transition: .4s ease-in-out;
+    }
+    .ezy__careers15-card:hover{
+    transform: scale(1.01);
+    background-color: rgba(var(--ezy-theme-color-rgb), 0.2);
+    }
+    .ezy__careers15-card a{
+    text-decoration: none;
+    color: var(--bs-body-color);
+    transition: .4s;
+    }
+    .ezy__careers15-card a:hover{
+    color: var(--ezy-theme-color);
+    }
+    .ezy__careers15-card h5{
+    font-size: 18px;
+    }
+    .ezy__careers15-card h5 span{
+    color: var(--ezy-theme-color);
+    }
+    
+    .ezy__careers15-img {
+    width: 100px;
+    height: 100px;
+    border: 1px solid var(--ezy-border-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .ezy__careers15-img img{
+    max-width: 50px;
+    height: auto;
+    }
+    .ezy__careers15 img{
+    object-fit: cover;
+    }
+    
+    /* button */
+    .ezy__careers15-btn{
+    padding: 8px 15px;
+    width: 150px;
+    font-size: 18px;
+    border: 1px solid var(--ezy-border-color);
+    background-color: transparent;
+    color: var(--bs-body-color);
+    opacity: .75;
+    transition: .4s;
+    }
+    .ezy__careers15-btn:hover{
+    opacity: 1;
+    }

@@ -18,6 +18,7 @@ const User = require('./models/userModel')
 const test = require('./routes/testRoutes');
 const user = require('./routes/userRoutes')
 const dashboard = require('./routes/dashboardRoutes');
+const job = require('./routes/jobRoutes');
 
 
 
@@ -94,6 +95,7 @@ app.use((req, res, next)=>{
 app.use('/api/v1', test);
 app.use('/api/v1', user);
 app.use('/api/v1', dashboard);
+app.use('/api/v1', job);
 
 
 app.listen(process.env.PORT, ()=>{
@@ -112,12 +114,12 @@ app.use((err, req, res, next) => {
     } else if (err.name === 'ValidationError') {
         err.status = 400;
         err.message = 'Validation failed';
-    } else if (err.name === 'MongoError' && err.code === 11000) {
+    } else if (err.name === 'MongoError' && err.code === 11000){
         err.status = 400;
         err.message = 'Duplicate entry';
     } else {
         err.status = 500;
-        err.message = 'Internal server error';
+        err.message = 'Internal server error!';
     }
     let {status, message} = err;
     res.render("./error/error.ejs", {err});

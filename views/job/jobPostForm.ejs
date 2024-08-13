@@ -1,0 +1,63 @@
+<%- include('../layout/header.ejs') %>
+
+
+<div class="bg-info p-4 rounded">
+    <form class="row g-3" action="/api/v1/job/create" 
+method="post" >
+    <div class="col-md-6">
+      <label for="name" class="form-label">Job Title</label>
+      <input type="text" name="title" class="form-control" id="name" required placeholder="like 'civil engineer', 'surveyor' etc..">
+    </div>
+
+    <div class="col-md-6">
+        <label for="name" class="form-label">Company name</label>
+        <input type="text" name="companyName" class="form-control" id="name" required placeholder="Please write company name">
+      </div>
+
+
+    <div class="col-md-5">
+        <label for="introduction" class="form-label">Company Introduction</label>
+        <textarea rows="14" type="text" name="companyDescription" class="form-control" id="introduction" placeholder="Introduce the company you posting job for"></textarea>
+    </div>
+<br>
+    <div class="col-md-5">
+        <label for="introduction" class="form-label">Full job description</label>
+        <textarea rows="14" type="text" name="jobDescription" class="form-control" id="introduction" placeholder="Describe the job in detail"></textarea>
+    </div>    
+
+    <div class="col-md-2">
+        <label for="name" class="form-label">Salary</label>
+        <input type="text" name="salary.from" class="form-control" id="name" placeholder="Salary range from">  <br>
+        <input type="text" name="salary.to" class="form-control" id="name" placeholder="Salary range to">
+    </div>
+
+    <div class="col-md-2">
+        <label for="name" class="form-label">Job Location</label>
+        <input type="text" name="location.country" class="form-control" id="location.country" placeholder="Country">  <br>
+        <input type="text" name="location.city" class="form-control" id="location.city" placeholder="City">
+    </div>
+
+    <div class="col-md-6">
+        <label for="name" class="form-label">Experience required</label>
+        <input type="text" name="experienceRequired" class="form-control" id="name" placeholder="Number of years">
+    </div>
+
+    <div class="col-md-4">
+        <label for="link" class="form-label">Share job link</label>
+        <input type="text" name="link" class="form-control" id="link" placeholder="Paste the Job link here if you have">
+    </div>
+
+    <div class="col-md-12">
+        <label for="introduction" class="form-label">How to apply</label>
+        <textarea rows="6" type="text" name="howToApply" class="form-control" id="introduction" placeholder="Please describe how to apply for this job"></textarea>
+    </div> 
+    
+    <div class="col-md-4">
+        <button class=" btn btn-md btn-success">Post job</button>
+    </div>
+    
+  </form>
+</div>
+
+
+<%- include('../layout/footer.ejs') %>

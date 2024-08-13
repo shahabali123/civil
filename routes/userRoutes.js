@@ -50,7 +50,8 @@ The Civil 2 Team`
     } catch (error) {
       console.error('Error sending login email:', error);
     }
-      res.redirect('/api/v1/tests'); 
+    let redirectUrl = res.locals.redirectUrl || '/api/v1/tests';
+      res.redirect(redirectUrl); 
     }
 );
 
