@@ -1,5 +1,6 @@
 const Test = require('../models/testModel')
 const User = require('../models/userModel')
+const Job = require('../models/jobModel')
 
 
 module.exports.isLoggedIn = (req, res, next) =>{
@@ -12,7 +13,7 @@ module.exports.isLoggedIn = (req, res, next) =>{
 };
 
 
-// middleware for checking if the user was editing or deleting the listing he is the owner of the listing or not
+// middleware for checking if the user was editing or deleting the test he is the owner of the listing or not
 module.exports.isOwner = async (req, res, next)=>{
     let id = req.params.id;
 let test = await Test.findById(id);
@@ -27,6 +28,21 @@ if (!test.user._id.equals(res.locals.currUser._id)) {
 }
 next();
 };
+
+
+module.exports.isJobOwner = async(req, res, next)=>{
+    let id = req.params.id;
+    let job = await Job.findById(id);
+    if (!job) {
+        req.flash('error', 'Job not found!');
+        return res.redirect('/api/v1/career'); 
+        }
+        if (!job.postedBy._id.equals(res.locals.currUser._id)) {
+            req.flash('error', 'You do not have permission to edit or delete this listing!');
+            return res.redirect(`/api/v1/career`)
+            }
+            next();
+}
 
 
 module.exports.isAdmin = async(req, res, next)=>{

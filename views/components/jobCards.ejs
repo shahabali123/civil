@@ -12,7 +12,7 @@
                 
                 <div class="col-12 col-md-7 mt-3 mt-md-0">
                   <div>
-                    <a href="#"><h4 class="fw-bold"><%= job.title %></h4></a>
+                    <a href="/api/v1/job/<%= job._id %>"><h4 class="fw-bold"><%= job.title %></h4></a>
                     <h5><span><%= job.companyName %></span> - <%= job.location.country %>, <%= job.location.city %></h5>
                   </div>
                   <div class="mt-4">

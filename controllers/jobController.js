@@ -37,3 +37,23 @@ exports.getAllJobs = wrapAsync(async(req, res, next)=>{
 
     res.render('./pages/career.ejs', {jobs, jobsCount});
 });
+
+
+exports.getSingleJob = wrapAsync(async(req, res)=>{
+    const job = await Job.findById(req.params.id).populate('postedBy').populate('applicant');
+    if(!job){
+        req.flash('error', 'Job not found')
+        res.redirect('/api/v1/career')
+    }
+    res.render('./job/getSingleJob.ejs', {job});
+})
+
+
+exports.deleteJob = wrapAsync(async(req, res)=>{
+    const job = await Job.findByIdAndDelete(req.params.id);
+    if(!job){
+        req.flash('error', 'Job not found')
+        res.redirect('/api/v1/career')
+    }
+    res.redirect(`/api/v1/user/${job.postedBy._id}#user-jobs`)
+})

@@ -24,7 +24,7 @@ router.post('/register',
 
 router.get('/login', getLoginForm);
 
-router.get('/user/:id', isLoggedIn, getSingleUser);
+router.get('/user/:id', getSingleUser);
 
 
 router.post('/login', 

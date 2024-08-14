@@ -1,0 +1,70 @@
+<%- include('../layout/header.ejs') %>
+
+<section class="ezy__blogdetails5">
+    <div class="container">
+      <div class="row">
+        <!-- sidebar -->
+        <div class="col-12 col-md-4 col-lg-3 order-2 order-md-1">
+          <div>
+            <div>
+              <h4 class="ezy__blogdetails5-title"><%= job.companyName %></h4>
+              <p class="opacity-75">
+                <%= job.companyDescription %>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- main contents -->
+        <div class="col-12 col-md-8 col-lg-9 order-1 order-md-2">
+                <h1 class="mt-4 opacity-75 "><%= job.title %></h1>
+            <p class="opacity-75 mt-5">
+              <%= job.jobDescription %>
+            </p>
+            <div class="md-4 p-2 rounded">
+                <h4 class="mt-4 opacity-75 ">Requirements</h4>
+                <p class="mt-4 opacity-75 ">Expreience required <%= job.experienceRequired %> years</p>
+            </div>
+            <h4 class="mt-4 opacity-75 ">How to apply</h4>
+            <p class="opacity-75 mt-2">
+              <%= job.howToApply %>
+            </p>
+
+            <h4 class="mt-4 opacity-75 ">Job location</h4>
+            <p class="opacity-75 mt-2">
+                <%= job.location.country %> - <%= job.location.city %>
+            </p>
+            <h4 class="mt-4 opacity-75 ">Salary range</h4>
+            <p class="opacity-75 mt-2"> from
+                <%= job.salary.from %> to <%= job.salary.to %>
+            </p>
+
+            
+            <% if (job.link) { %>
+             <a href="<%= job.link %>" target="_blank">External link to apply for this job</a>
+            <% } %>
+            <!-- comment -->
+            <div class="ezy__blogdetails5-comment d-flex align-items-start p-4 p-md-5 mt-4 mt-md-5">
+              <img
+                src="<%= job.postedBy.avatar.url %>"
+                alt=""
+                class="img-fluid rounded-circle"
+                width="70"
+              />
+              <div class="ms-4">
+                <h5 class="ezy__blogdetails5-user mb-1"><%= job.postedBy.username %></h5>
+                <p class="opacity-75"><%= new Date(job.postedAt).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></p>
+                <p class="opacity-50">Posted <%= Math.ceil((Date.now() - job.postedAt) / (1000 * 60 * 60 * 24)) %>
+                    Day ago - <% if (job.applicant && job.applicant.length) { %>
+                      <%= job.applicant.length %>
+                    <% } else{%> 0 <% } %> applicant</p>
+              </div>
+            </div>
+            <div class="md-4">
+                <button class="btn btn-sm btn-info disabled">Apply</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<%- include('../layout/footer.ejs') %>

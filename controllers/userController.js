@@ -3,6 +3,7 @@ const wrapAsync = require('../middlewares/wrapAsync')
 const passport = require('passport')
 const Test = require('../models/testModel')
 const sendEmail = require('../utils/sendEmail');
+const Job = require('../models/jobModel')
 
 
 
@@ -66,9 +67,10 @@ module.exports.getSingleUser = wrapAsync(async(req, res)=>{
     const id = req.params.id;
     const user = await User.findById(id);
     const userTests = await Test.find({ user: id });
+    const userJobs = await Job.find({postedBy: id});
 
     if(!user){
         req.flash('error', 'User not found')
     }
-    res.render('./user/showUser.ejs', {user, userTests})
+    res.render('./user/showUser.ejs', {user, userTests, userJobs})
 })
