@@ -25,14 +25,8 @@
               </div>
               <p class="mb-0 ms-3"><%= new Date(test.date).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></p>
             </div>
-            <div class="ezy__blogdetails2-social">
-              <ul class="nav ezy__footer13-quick-links">
-                <p><b>Category:</b></p>
-                <p><i>"<%= test.category %>"</i></p>
-              </ul>
-            </div>
           </div>
-  
+          <p><b>Category:</b> <i>"<%= test.category %>"</i></p>
           <img src="<%= test.image.url %>" alt="" class="img-fluid rounded" />
   
           <div class="ezy__blogdetails2-content mt-5">
