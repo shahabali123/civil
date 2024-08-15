@@ -14,7 +14,7 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 .main-container{
-    padding: 3vmin;
+    padding-top: 9vmax;
     /* background: #000000df;
     color: rgb(240, 255, 255); */
     height: 100%;
@@ -24,6 +24,6 @@ body{
 
 @media screen and (max-width: 600px) {
     .main-container{
-        padding: 2vw 2vw;
+        padding-top: 50px;
     }
 }

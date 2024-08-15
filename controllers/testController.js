@@ -11,7 +11,7 @@ exports.getAllTests = async(req, res)=>{
     const productCount = await Test.countDocuments();
 
 Math.ceil(productCount/resultPerPage);
-    const apiFeature = new ApiFeatures(Test.find(), req.query)
+    const apiFeature = new ApiFeatures(Test.find().populate('user'), req.query)
     .search();
     
     const allTests = await apiFeature.query;

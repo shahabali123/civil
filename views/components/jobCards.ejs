@@ -16,7 +16,7 @@
                     <h5><span><%= job.companyName %></span> - <%= job.location.country %>, <%= job.location.city %></h5>
                   </div>
                   <div class="mt-4">
-                    <p class="opacity-50">Posted     Posted <%= Math.ceil((Date.now() - job.postedAt) / (1000 * 60 * 60 * 24)) %> days ago
+                    <p class="opacity-50">Posted <%= Math.ceil((Date.now() - job.postedAt) / (1000 * 60 * 60 * 24)) %>
                       Days ago - <% if (job.applicant && job.applicant.length) { %>
                         <%= job.applicant.length %>
                       <% } else{%> 0 <% } %> applicants</p>
@@ -46,3 +46,7 @@
       </div>
     </div>
     </section>
+
+
+
+

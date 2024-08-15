@@ -1,4 +1,4 @@
-<nav class="navbar bg-dark border-bottom border-body " data-bs-theme="dark">
+<nav class="navbar bg-body-tertiary fixed-top" data-bs-theme="dark">
     <div class="container-fluid">
       <% if (currUser) { %>
         <a class="navbar-brand" href="/api/v1/user/<%= currUser._id %>"><img src="<%= currUser.avatar.url %>" alt="" <% if (currUser.role === 'admin') { %>

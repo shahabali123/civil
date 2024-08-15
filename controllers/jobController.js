@@ -5,6 +5,7 @@ const ExpressError = require('../middlewares/ExpressError');
 
 
 
+
 exports.getPostJobForm = (req, res)=>{
     res.render('./job/jobPostForm.ejs');
 }
@@ -16,6 +17,7 @@ exports.postJob = wrapAsync(async(req, res)=>{
     job.postedBy = req.user._id;
 
     job.save();
+    req.flash('success', 'Job posted successfully');
 
     res.redirect('/api/v1/career')
 });
@@ -55,5 +57,6 @@ exports.deleteJob = wrapAsync(async(req, res)=>{
         req.flash('error', 'Job not found')
         res.redirect('/api/v1/career')
     }
+    req.flash('success', 'Job post deleted successfully');
     res.redirect(`/api/v1/user/${job.postedBy._id}#user-jobs`)
 })
