@@ -60,28 +60,9 @@
               </div>
             </div>
             <!-- Off canvas for contact with job poster -->
-            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Contact</button>
-
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-              <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasRightLabel">Civil 2 messanger</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-              </div>
-              <div class="offcanvas-body">
-                <div class="ezy__blogdetails5-comment d-flex align-items-start p-4 p-md-5 mt-4 mt-md-5">
-                  <img
-                    src="<%= job.postedBy.avatar.url %>"
-                    alt=""
-                    class="img-fluid rounded-circle"
-                    width="70"
-                  />
-                  <div class="ms-4">
-                    <h5 class="ezy__blogdetails5-user mb-1"><%= job.postedBy.username %></h5>
-                  </div>
-                </div>
-                This feature will be available soon, please apply through external link.
-              </div>
-            </div>
+            
+                <%- include('../components/messageBox.ejs') %>
+              
             <!-- off canvas code end here -->
         </div>
       </div>

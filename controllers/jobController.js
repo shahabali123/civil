@@ -47,6 +47,7 @@ exports.getSingleJob = wrapAsync(async(req, res)=>{
         req.flash('error', 'Job not found')
         res.redirect('/api/v1/career')
     }
+    
     res.render('./job/getSingleJob.ejs', {job});
 })
 
@@ -60,3 +61,35 @@ exports.deleteJob = wrapAsync(async(req, res)=>{
     req.flash('success', 'Job post deleted successfully');
     res.redirect(`/api/v1/user/${job.postedBy._id}#user-jobs`)
 })
+
+
+// exports.getEmailForm = wrapAsync(async(req, res)=>{
+//     const job = Job.findById(req.params.id).populate('postedBy')
+//     res.render('./components/messagebox.ejs', {job})
+// })
+
+// exports.sendEmailForJob = wrapAsync(async(req, res)=>{
+
+//     const job = await Job.findById(req.params.id);
+//     const postedBy = await UserActivation.findById(job.postedBy._id);
+//     const {subject, message} = req.body;
+//     const jobUrl = `${req.protocol}://${req.get('host')}/api/v1/job/${job._id}`
+//     try {
+//         await sendEmail({
+//             email: postedBy.email,
+//             subject: subject,
+//             message: `${message}
+//             <br><br>Best regards, <br> ${req.user.name}
+//             <br><br>
+//             <a href=${jobUrl}>See Job</a>`,
+//           });
+//         job.applicant = req.user._id;
+//         await job.save();
+//         req.flash('success', 'Email sent successfully');
+        
+//     } catch (error) {
+//         req.flash('error', 'Error sending email')
+//         console.log(error)
+//     }
+//     res.redirect(`/api/v1/job/${job._id}`);
+// })
