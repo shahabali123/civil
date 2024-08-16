@@ -3,12 +3,14 @@ const router = express.Router();
 
 const {isLoggedIn, isJobOwner}= require('../middlewares/authentication')
 
+const { validateJob } = require('../middlewares/middlewares')
+
 const { getPostJobForm, postJob, getAllJobs, getSingleJob, deleteJob, sendEmailForJob, getEmailForm }= require('../controllers/jobController')
 
 
 router.get('/job/create', isLoggedIn, getPostJobForm);
 
-router.post('/job/create', isLoggedIn, postJob);
+router.post('/job/create', isLoggedIn, validateJob, postJob);
 
 router.get('/career', getAllJobs)
 

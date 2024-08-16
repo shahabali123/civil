@@ -46,12 +46,14 @@
             <a class="nav-link " aria-disabled="true" href="/api/v1/job/create">Post new Job</a>
           </li>
         </ul>
-        <form class="d-flex" role="search" action="/api/v1/tests">
-          <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search" name="keyword">
-          <a href="#all-tests">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </a>
-        </form>
+        <% if (req.originalUrl === '/api/v1/tests') { %>
+          <form class="d-flex" role="search" action="/api/v1/tests">
+            <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search" name="keyword">
+            <a href="#all-tests">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </a>
+          </form>
+        <% } %>
       </div>
     </div>
   </nav>

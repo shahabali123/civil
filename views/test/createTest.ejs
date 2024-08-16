@@ -1,21 +1,20 @@
-<!DOCTYPE html>
-<%- include('../layout/header.ejs') %>
 
+    <%- include('../layout/header.ejs') %>
+
+<div class="p-4">
     <h1>Create Test</h1>
 
-    <form class="row g-3" action="/api/v1/test/create" 
-    method="post"
-    enctype="multipart/form-data">
+    <form class="row g-3" action="/api/v1/test/create" method="post" enctype="multipart/form-data">
         <div class="col-md-6">
-          <label for="name" class="form-label">Test Name</label>
-          <input type="text" name="name" class="form-control" id="name" required>
+            <label for="name" class="form-label">Test Name</label>
+            <input type="text" name="name" class="form-control" id="name" required>
         </div>
 
         <div class="col-md-4">
             <label for="category" class="form-label">Category</label>
             <select id="category" name="category" class="form-select" required>
-              <option selected>Choose...</option>
-              <option value="Soil">Soil Test</option>
+                <option selected>Choose...</option>
+                <option value="Soil">Soil Test</option>
                 <option value="Aggregate">Aggregate Test</option>
                 <option value="Concrete">Concrete Test</option>
                 <option value="Asphalt">Asphalt Test</option>
@@ -30,31 +29,28 @@
 
         <div class="col-md-6">
             <label for="equipments" class="form-label">Test Equipments</label>
-        <% for( let index = 0; index <= 5; index++ ) { %>
-                <input type="text" name="equipments" class="form-control" id="equipments" required>
-                <br>
-        <% } %>
-        </div>
-
-        <div> 
-            <label for="image" class="form-label">Upload Image:</label>
-            <input type="file" class="form-control" required name="image" >
+            <div id="equipments-container">
+                <input type="text" name="equipments[]" class="form-control" required> <br> 
+            </div>
         </div>
 
         <div class="col-md-6">
             <label for="sampling" class="form-label">Test Sampling Procedure</label>
-        <% for( let index = 0; index <= 5; index++ ) { %>
-                <input type="text" name="sampling" class="form-control" id="sampling" required>
-                <br>
-        <% } %>
+            <div id="sampling-container">
+                <input type="text" name="sampling[]" class="form-control" required> <br>
+            </div>
         </div>
-        
+
         <div class="col-md-6">
             <label for="procedure" class="form-label">Test Procedure</label>
-        <% for( let index = 0; index <= 5; index++ ) { %>
-                <input type="text" name="procedure" class="form-control" id="procedure" required>
-                <br>
-        <% } %>
+            <div id="procedure-container">
+                <input type="text" name="procedure[]" class="form-control" required> <br>
+            </div>
+        </div>
+
+        <div>
+            <label for="image" class="form-label">Upload Image:</label>
+            <input type="file" class="form-control" required name="image">
         </div>
 
         <div class="col-md-6">
@@ -67,9 +63,50 @@
             <textarea rows="14" type="text" class="form-control" name="result" id="result" required></textarea>
         </div>
 
-        
         <div class="col-12">
-          <button type="submit" class="btn btn-primary btn-lg">Create Test</button>
+            <button type="submit" class="btn btn-primary btn-lg">Create Test</button>
         </div>
-      </form>
-<%- include('../layout/footer.ejs') %>
+    </form>
+</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    setupAddButton('equipments');
+    setupAddButton('sampling');
+    setupAddButton('procedure');
+  });
+  
+  function setupAddButton(fieldName) {
+    const container = document.getElementById(`${fieldName}-container`);
+    const addButton = document.createElement('button');
+    addButton.textContent = `Add ${fieldName}`;
+    addButton.classList.add('btn', 'btn-secondary', 'mt-2');
+    container.appendChild(addButton);
+  
+    addButton.addEventListener('click', () => {
+      addNewInputField(container, fieldName);
+    });
+  }
+  
+  function addNewInputField(container, fieldName) {
+    const newInput = document.createElement('input');
+    newInput.type = 'text';
+    newInput.name = `${fieldName}[]`;
+    newInput.classList.add('form-control', 'mb-2');
+    newInput.required = true;
+  
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove';
+    removeButton.classList.add('btn', 'btn-danger', 'btn-sm', 'ms-2');
+    removeButton.addEventListener('click', () => {
+      container.removeChild(newInput);
+      container.removeChild(removeButton);
+    });
+  
+    container.appendChild(newInput);
+    container.appendChild(removeButton);
+  }
+  
+    </script>
+
+    <%- include('../layout/footer.ejs') %>

@@ -1,5 +1,6 @@
 <%- include('../layout/header.ejs') %>
 
+   <div class="p-4">
     <h1>Update test Form</h1>
     <form class="row g-3" action="/api/v1/test/update/<%= test._id %>?_method=PATCH" method="post"
         enctype="multipart/form-data">
@@ -35,7 +36,7 @@
 
         <div> 
             <label for="image" class="form-label">Upload Image:</label>
-            <input type="file" class="form-control"  name="image">
+            <input type="file" class="form-control"  name="image" >
             <div class="valid-feedback">&#10003;</div>
             <div class="invalid-feedback">This field is required.</div>
         </div>
@@ -72,4 +73,5 @@
         </div>
       </form>
     
+   </div>
 <%- include('../layout/footer.ejs') %>

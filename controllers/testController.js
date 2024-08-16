@@ -106,10 +106,11 @@ exports.getUpdateTestForm = wrapAsync(async(req, res)=>{
 
 exports.postUpdatedTest = wrapAsync(async(req, res)=>{
     const id = req.params.id;
-    let url = req.file.path;
-    let filename = req.file.filename;
 
     if(req.file){
+        
+    let url = req.file.path;
+    let filename = req.file.filename;
         await Test.findByIdAndUpdate(id, {
             name: req.body.name,
             category: req.body.category,
