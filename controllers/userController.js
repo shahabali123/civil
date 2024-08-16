@@ -32,7 +32,7 @@ exports.registerUser = wrapAsync(async(req, res)=>{
     try {
         const newUserUrl = `${req.protocol}://${req.get('host')}/api/v1/user/${registerUser._id}`
     const message = `New user ${registerUser.username} (${registerUser.email}) has been registered.
-<img href="registerUser.avatar.url"/>
+<img href="${registerUser.avatar.url}"/>
             Their profession is: ${registerUser.profession}
             You can view the user details here: <a href="${newUserUrl}">${registerUser.username}</a>`;
 
