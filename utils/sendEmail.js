@@ -1,9 +1,8 @@
-const { options } = require('joi');
 const nodeMailer = require('nodemailer');
 
 
 const sendEmail = async(options)=>{
-    const transporter = await nodeMailer.createTransport({
+    const transporter =  nodeMailer.createTransport({
         host: process.env.SMPT_HOST,
         port: process.env.SMPT_PORT,
         secure: false,
@@ -17,7 +16,7 @@ const sendEmail = async(options)=>{
         from: process.env.SMPT_MAIL,
         to: options.email,
         subject: options.subject,
-        text: options.message
+        html: options.message
     }
     await transporter.sendMail(mailOptions);
 };
