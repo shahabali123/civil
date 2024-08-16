@@ -1,7 +1,9 @@
 const Job = require('../models/jobModel')
+const User = require('../models/jobModel')
 const wrapAsync = require('../middlewares/wrapAsync');
 const sendEmail = require('../utils/sendEmail');
 const ExpressError = require('../middlewares/ExpressError');
+
 
 
 
@@ -63,33 +65,33 @@ exports.deleteJob = wrapAsync(async(req, res)=>{
 })
 
 
-// exports.getEmailForm = wrapAsync(async(req, res)=>{
-//     const job = Job.findById(req.params.id).populate('postedBy')
-//     res.render('./components/messagebox.ejs', {job})
-// })
+exports.getEmailForm = wrapAsync(async(req, res)=>{
+    const job = await Job.findById(req.params.id).populate('postedBy')
+    res.render('./pages/inbox.ejs', {job})
+})
 
-// exports.sendEmailForJob = wrapAsync(async(req, res)=>{
-
-//     const job = await Job.findById(req.params.id);
-//     const postedBy = await UserActivation.findById(job.postedBy._id);
-//     const {subject, message} = req.body;
-//     const jobUrl = `${req.protocol}://${req.get('host')}/api/v1/job/${job._id}`
-//     try {
-//         await sendEmail({
-//             email: postedBy.email,
-//             subject: subject,
-//             message: `${message}
-//             <br><br>Best regards, <br> ${req.user.name}
-//             <br><br>
-//             <a href=${jobUrl}>See Job</a>`,
-//           });
-//         job.applicant = req.user._id;
-//         await job.save();
-//         req.flash('success', 'Email sent successfully');
+exports.sendEmailForJob = wrapAsync(async(req, res)=>{
+    const job = await Job.findById(req.params.id).populate('postedBy');
+    console.log(req.body)
+    const {subject, message} = req.body;
+    const jobUrl = `${req.protocol}://${req.get('host')}/api/v1/job/${job._id}`
+    try {
+        await sendEmail({
+            email: job.postedBy.email,
+            subject: subject,
+            message: `${message}
+            <br><br>Best regards, <br> ${req.user.username}
+            <br><br>
+            <a href=${jobUrl}>${job.title}</a>
+            <br><br>
+            <p>Contact applicant: ${req.user.email}</a>`,
+          });
+        job.applicant = req.user._id;
+        await job.save();
+        req.flash('success', 'Email sent successfully');
         
-//     } catch (error) {
-//         req.flash('error', 'Error sending email')
-//         console.log(error)
-//     }
-//     res.redirect(`/api/v1/job/${job._id}`);
-// })
+    } catch (error) {
+        req.flash('error', 'Error sending email')
+    }
+    res.redirect(`/api/v1/job/${job._id}`);
+})

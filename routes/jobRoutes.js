@@ -12,9 +12,9 @@ router.post('/job/create', isLoggedIn, postJob);
 
 router.get('/career', getAllJobs)
 
-// router.post('/job/sendemail', isLoggedIn, sendEmailForJob);
+router.get('/job/sendmail/:id', isLoggedIn, getEmailForm);
 
-// router.get('/job/sendmail/:id', isLoggedIn, getEmailForm);
+router.post('/job/:id/sendemail', isLoggedIn, sendEmailForJob);
 
 router.get('/job/:id', getSingleJob);
 

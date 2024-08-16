@@ -4,32 +4,38 @@
 		<div class="container">
 			<div class="row py-4 justify-content-between">
 				<div class="col-lg-4 mb-5 mb-lg-0">
-					<h2 class="ezy__contact11-title mb-3 mt-0 text-white">Got an idea!
-					<p class="ezy__header42-sub-heading mb-5">We value your feedback!
-
-Your opinion matters to us. We are constantly striving to enhance your experience on our website, and your ideas can play a crucial role in shaping its future. Share your thoughts, suggestions, and recommendations with us to help us improve our website for you. Your input is invaluable to us, and we look forward to hearing from you. Together, we can make our website even better. Thank you for being a part of our community!</p>
+					<h2 class="ezy__contact11-title mb-3 mt-0 text-white">Hi! <%= currUser.username %> </h2>
+					<p class="ezy__header42-sub-heading mb-5 text-white">Show your interest in applying for this job by sending a message to <%= job.postedBy.username %>.</p>
+					<h2 class="ezy__contact11-title mb-3 mt-0 text-white"><%= job.title %></h2>
+					<p class="ezy__header42-sub-heading mb-5 text-white"><%= job.jobDescription %></p>
 				</div>
 				<div class="col-lg-5">
 					<div class="card ezy__contact11-form-card">
 						<div class="card-body p-md-5">
-							<h2 class="ezy__contact11-heading mb-3">Contact Us</h2>
-							<p class="ezy__contact11-sub-heading mb-5">Share your thoughts with us.</p>
+							<h2 class="ezy__contact11-heading mb-3">Contact</h2>
+							<div>
+								<img
+						  src="<%= job.postedBy.avatar.url %>"
+						  alt=""
+						  class="img-fluid rounded-circle"
+						  width="70"
+						/>
+						  <h5 class="ezy__blogdetails5-user mb-1"><%= job.postedBy.username %></h5>
+						</div>
 
-							<form>
-								<div class="form-group mb-3 mt-2">
-									<input type="text" class="form-control" placeholder="Enter Name" />
-								</div>
-								<div class="form-group mb-3 mt-2">
-									<input type="email" class="form-control" placeholder="Enter Email" />
-								</div>
-								<div class="form-group mb-3">
-									<textarea name="message" class="form-control" placeholder="Enter Message"
-										rows="16" ></textarea>
-								</div>
-								<div class="text-end">
-									<button type="submit" class="btn btn-primary ezy__contact11-btn">Submit</button>
-								</div>
-							</form>
+						<form action="/api/v1/job/<%= job._id %>/sendemail" method="post">
+							<div class="form-group mb-3 mt-2">
+								<input type="text" name="subject"  class="form-control" placeholder="Subject" required/>
+							</div>
+							
+							<div class="form-group mb-3">
+								<textarea name="message" class="form-control" placeholder="Enter Message"
+									rows="16" required></textarea>
+							</div>
+							<div class="text-end">
+								<button type="submit" class="btn btn-primary ezy__contact11-btn">Send</button>
+							</div>
+						</form>
 						</div>
 					</div>
 				</div>

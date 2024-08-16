@@ -59,11 +59,9 @@
                     <% } else{%> 0 <% } %> applicant</p>
               </div>
             </div>
-            <!-- Off canvas for contact with job poster -->
-            
-                <%- include('../components/messageBox.ejs') %>
-              
-            <!-- off canvas code end here -->
+            <form action="/api/v1/job/sendmail/<%= job._id %>" method="get">
+              <button class="btn btn-md btn-info">Contact</button>
+            </form>
         </div>
       </div>
     </div>
