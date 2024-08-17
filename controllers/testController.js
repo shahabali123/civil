@@ -37,7 +37,7 @@ exports.getSingleTest = wrapAsync(async(req, res)=>{
     
     if(!test){
         req.flash('error', 'Test not found')
-        return res.redirect('/api/v1/tests')
+        return res.redirect('/')
     }
     const similarTests = await Test.find({category: test.category})
     await Promise.all(similarTests.map(t => t.populate('user')));    // populating user in the test
@@ -91,7 +91,7 @@ exports.createNewTest = wrapAsync(async(req, res)=>{
         console.log(error)
     }
 
-    res.redirect('/api/v1/tests');
+    res.redirect('/');
 })
 
 
@@ -141,7 +141,7 @@ exports.postUpdatedTest = wrapAsync(async(req, res)=>{
     }
 
     req.flash('success', 'Test updated successfully')
-    res.redirect('/api/v1/tests');
+    res.redirect('/');
 })
 
 
@@ -153,13 +153,13 @@ exports.deleteTest = wrapAsync(async(req, res)=>{
             await cloudinary.uploader.destroy(test.image.filename); // Use await here
             await Test.findByIdAndDelete(id);
             req.flash('success', 'Test deleted successfully')
-            res.redirect('/api/v1/tests');
+            res.redirect('/');
         }else{
             req.flash('error', 'Test not found');
-            res.redirect('/api/v1/tests');
+            res.redirect('/');
         }
     }else{
         req.flash('error', 'Test not found');
-        res.redirect('/api/v1/tests');
+        res.redirect('/');
         }
 });

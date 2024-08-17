@@ -30,7 +30,7 @@ exports.getAllJobs = wrapAsync(async(req, res, next)=>{
 
         if(!jobs){
             req.flash('error', 'No job found')
-            res.redirect('/api/v1/tests')
+            res.redirect('/')
         }
 
     const jobsCount = await Job.countDocuments();

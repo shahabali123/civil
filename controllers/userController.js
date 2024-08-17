@@ -46,7 +46,7 @@ exports.registerUser = wrapAsync(async(req, res)=>{
     }
     
 
-    res.redirect('/api/v1/tests');
+    res.redirect('/');
 })
 
 
@@ -62,7 +62,7 @@ module.exports.logOut = (req, res, next)=>{
            return next(err);
         }
         req.flash("success", "Logged out successfully!")
-        res.redirect('/api/v1/tests');
+        res.redirect('/');
     }); 
 };
 

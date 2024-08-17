@@ -93,7 +93,7 @@ app.use((req, res, next)=>{
 
 
 
-app.use('/api/v1', test);
+app.use('/', test);
 app.use('/api/v1', user);
 app.use('/api/v1', dashboard);
 app.use('/api/v1', job);

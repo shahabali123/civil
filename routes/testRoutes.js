@@ -11,35 +11,35 @@ const upload = multer({storage});
 const {getAllTests, getSingleTest, getCreateTest, createNewTest, getUpdateTestForm, postUpdatedTest, deleteTest } = require('../controllers/testController');
 
 
-router.get('/tests', getAllTests);
+router.get('/', getAllTests);
 
 
 
-router.get('/test/create', 
+router.get('/api/v1/test/create', 
     isLoggedIn,
     getCreateTest)
 
-router.post('/test/create', 
+router.post('/api/v1/test/create', 
     isLoggedIn, 
     upload.single('image'),
     validateTest, 
     createNewTest)
 
-router.get('/test/update/:id', isLoggedIn, isOwner, getUpdateTestForm)
+router.get('/api/v1/test/update/:id', isLoggedIn, isOwner, getUpdateTestForm)
 
-router.patch('/test/update/:id', 
+router.patch('/api/v1/test/update/:id', 
     isLoggedIn, 
     isOwner, 
     upload.single('image'),
     validateTest, 
     postUpdatedTest)
 
-router.delete('/test/delete/:id', 
+router.delete('/api/v1/test/delete/:id', 
     isLoggedIn, 
     isOwner, 
     deleteTest)
 
 
-    router.get('/test/:id', getSingleTest);
+    router.get('/api/v1/test/:id', getSingleTest);
 
 module.exports = router;

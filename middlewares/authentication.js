@@ -20,11 +20,11 @@ let test = await Test.findById(id);
 
 if (!test) {
     req.flash('error', 'Test not found!');
-    return res.redirect('/api/v1/tests'); // Or handle the error differently
+    return res.redirect('/'); // Or handle the error differently
 }
 if (!test.user._id.equals(res.locals.currUser._id)) {
     req.flash('error', 'You do not have permission to edit or delete this listing!');
-    return res.redirect(`/api/v1/tests`)
+    return res.redirect(`/`)
 }
 next();
 };
@@ -48,7 +48,7 @@ module.exports.isJobOwner = async(req, res, next)=>{
 module.exports.isAdmin = async(req, res, next)=>{
     if (res.locals.currUser.role !== 'admin') {
         req.flash('error', 'You do not have permission to access dashboard!');
-        return res.redirect(`/api/v1/tests`)
+        return res.redirect(`/`)
     }
     next();
 };
