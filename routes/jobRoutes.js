@@ -10,7 +10,7 @@ const { getPostJobForm, postJob, getAllJobs, getSingleJob, deleteJob, sendEmailF
 
 router.get('/job/create', isLoggedIn, getPostJobForm);
 
-router.post('/job/create', isLoggedIn, validateJob, postJob);
+router.post('/job/create', isLoggedIn, postJob);
 
 router.get('/career', getAllJobs)
 

@@ -17,29 +17,26 @@ module.exports.joiTestSchema = Joi.object({
 
 
 
-exports.JoiJobSchema = Joi.object({
-  title: Joi.string().required().trim(),
-  link: Joi.string().trim().uri().allow(''), // Allow empty string for link
-  companyName: Joi.string().required().trim(),
-  companyDescription: Joi.string().trim().allow(''),
-  location: Joi.object({
-    country: Joi.string().trim().allow(''),
-    city: Joi.string().trim().allow(''),
-  }),
-  jobDescription: Joi.string().trim().allow(''),
-  experienceRequired: Joi.string().trim().allow(''),
-  salary: Joi.object({
-    from: Joi.number().min(0).allow(''), // Allow empty for salary range
-    to: Joi.number().min(0).allow(''),
-  }),
-  howToApply: Joi.string().trim().allow(''),
-  // You might not need to validate postedBy and applicant here 
-  // as they are handled by Mongoose relationships
-  // postedBy: Joi.objectId(), 
-  // applicant: Joi.objectId(),
-  postedAt: Joi.date().allow(''), // Allow empty string for date
-});
 
+  exports.JoiJobSchema = Joi.object({
+    title: Joi.string().required().trim(),
+    link: Joi.string().trim().uri().allow('').allow(null), // Allow empty string, null for link
+    companyName: Joi.string().required().trim(),
+    companyDescription: Joi.string().trim().allow('').allow(null),
+    location: Joi.object({
+      country: Joi.string().trim().allow('').allow(null),
+      city: Joi.string().trim().allow('').allow(null),
+    }).allow(null), // Allow the entire location object to be null
+    jobDescription: Joi.string().trim().allow('').allow(null),
+    experienceRequired: Joi.string().trim().allow('').allow(null),
+    salary: Joi.object({
+      from: Joi.number().min(0).allow('').allow(null), // Allow empty, null for salary range
+      to: Joi.number().min(0).allow('').allow(null),
+    }).allow(null), // Allow the entire salary object to be null
+    howToApply: Joi.string().trim().allow('').allow(null),
+    postedAt: Joi.date().allow('').allow(null), // Allow empty string, null for date
+  });
+  
 
 
 
