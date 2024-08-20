@@ -141,6 +141,12 @@
               <button  class="btn ezy__header42-btn rounded-pill">Explore jobs posted by <%= user.username %></button>
             </a>
           <% } %>
+          <br><br>
+          <% if (currUser && currUser.id.toString() === user._id.toString() || currUser.role === 'admin') { %>
+            <form action="/api/v1/user/<%= user._id %>/delete?_method=DELETE" method="post">
+              <button type="submit" class="btn btn-danger d-flex align-items-center">Delete Account</button>
+            </form>
+          <% } %>
         </div>
         <div class="col-12 col-lg-5 position-relative text-center">
           <!-- shape seven -->

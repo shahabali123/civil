@@ -4,6 +4,7 @@ const passport = require('passport')
 const Test = require('../models/testModel')
 const sendEmail = require('../utils/sendEmail');
 const Job = require('../models/jobModel')
+const { cloudinary } = require('../config/cloudConfig');
 
 
 
@@ -78,3 +79,49 @@ module.exports.getSingleUser = wrapAsync(async(req, res)=>{
     }
     res.render('./user/showUser.ejs', {user, userTests, userJobs})
 })
+
+
+
+// delete user
+module.exports.deleteUser = wrapAsync(async (req, res) => {
+    const id = req.params.id;
+    const user = req.user;
+  
+    if (user) {
+      try {
+        // Delete user's avatar from Cloudinary (if exists)
+        if (user.avatar.filename) {
+          await cloudinary.uploader.destroy(user.avatar.filename);
+        }
+  
+        // Find tests created by the user
+        const userTests = await Test.find({ user: id });
+  
+        // Delete test images from Cloudinary and then delete the tests
+        for (const test of userTests) {
+          if (test.image.filename) {
+            await cloudinary.uploader.destroy(test.image.filename);
+          }
+        }
+        await Test.deleteMany({ user: id });
+  
+        // Find and delete jobs posted by the user
+        await Job.deleteMany({ postedBy: id });
+  
+        // Finally, delete the user
+        await User.findByIdAndDelete(id);
+  
+        req.flash('success', 'User and associated data deleted successfully');
+        let redirectUrl = res.locals.redirectUrl || '/';
+        res.redirect(redirectUrl);
+      } catch (error) {
+        console.error('Error deleting user and associated data:', error);
+        req.flash('error', 'Error deleting user and associated data');
+        res.redirect('/');
+      }
+    } else {
+      req.flash('error', 'User not found');
+      res.redirect('/');
+    }
+  });
+  

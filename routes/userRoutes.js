@@ -8,12 +8,12 @@ const multer = require('multer');
 const upload = multer({storage});
 const {saveRedirectUrl}= require('../middlewares/middlewares');
 
-const {isLoggedIn}= require('../middlewares/authentication')
+const {isLoggedIn, isCurrUser}= require('../middlewares/authentication')
 
 
 
 
-const {getRegistrationForm, registerUser, getLoginForm, logOut, getSingleUser} = require('../controllers/userController');
+const {getRegistrationForm, registerUser, getLoginForm, logOut, getSingleUser, deleteUser} = require('../controllers/userController');
 
 
 router.get('/register', getRegistrationForm);
@@ -59,7 +59,7 @@ The Civil 2 Team`
 router.get("/logout", logOut); // GET request for logout
 
 
-
+router.delete('/user/:id/delete', isLoggedIn, isCurrUser, deleteUser)
 
 
 module.exports = router;

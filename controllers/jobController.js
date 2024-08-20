@@ -61,7 +61,8 @@ exports.deleteJob = wrapAsync(async(req, res)=>{
         res.redirect('/api/v1/career')
     }
     req.flash('success', 'Job post deleted successfully');
-    res.redirect(`/api/v1/user/${job.postedBy._id}#user-jobs`)
+    let redirectUrl = res.locals.redirectUrl || '/';
+    res.redirect(redirectUrl)
 })
 
 

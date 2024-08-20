@@ -153,7 +153,8 @@ exports.deleteTest = wrapAsync(async(req, res)=>{
             await cloudinary.uploader.destroy(test.image.filename); // Use await here
             await Test.findByIdAndDelete(id);
             req.flash('success', 'Test deleted successfully')
-            res.redirect('/');
+            let redirectUrl = res.locals.redirectUrl || '/';
+            res.redirect(redirectUrl);
         }else{
             req.flash('error', 'Test not found');
             res.redirect('/');
