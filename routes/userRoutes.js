@@ -39,13 +39,15 @@ router.post('/login',
     try {
       await sendEmail({
         email: req.user.email, // Send to the logged-in user's email
-        subject: 'Welcome Back to Civil 2!',
-        message: `Hi ${req.user.username},
+        subject: 'Welcome Back to Naxgat!',
+        message: `<pre>Hi ${req.user.username}
+        Welcome back to Civil 2! We're glad you're here.
+        If you are professional and want to contribute on our platform you can post Laboratory tests and offer new jobs openings to professionals in career section.</pre>,
 
-Welcome back to Civil 2! We're glad you're here.
+
 
 Thanks,
-The Civil 2 Team`
+The Naxgat Team`
       });
     } catch (error) {
       console.error('Error sending login email:', error);
