@@ -47,11 +47,16 @@
     <% } %>
 </ol>
 <br>
-<p><b>Procedure:</b> <%= test.procedure %></p>
+<p><b>Procedure:</b></p>
+<ol>
+  <% for( procedure of test.procedure ) { %>
+    <li><%= procedure %></li>
+<% } %>
+</ol>
 <br>
-<p><b>Formula: </b> <%= test.formula %></p>
+<pre><b>Formula: </b> <%= test.formula %></pre>
 <br>
-<p><b>Results: </b><%= test.result %></p>
+<pre><b>Results: </b><%= test.result %></pre>
 <br>
 
 
