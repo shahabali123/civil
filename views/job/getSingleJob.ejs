@@ -58,10 +58,19 @@
                       <%= job.applicant.length %>
                     <% } else{%> 0 <% } %> applicant</p>
               </div>
+              <br><br>
+              
+              
             </div>
-            <form action="/api/v1/job/sendmail/<%= job._id %>" method="get">
-              <button class="btn btn-md btn-info">Contact</button>
-            </form>
+            <div class="col">
+              <form action="/api/v1/job/sendmail/<%= job._id %>" method="get">
+                <button class="btn btn-md btn-info">Contact</button>
+              </form>
+              <br><br>
+              <a href="https://api.whatsapp.com/send?text=Check out this job on Naxgat: https://naxgat.com/api/v1/job/<%= job._id %> - <%= encodeURIComponent(job.title) %>" target="_blank" class="btn btn-success">
+                <i class="fa-solid fa-share-from-square"></i> &nbsp; &nbsp;Share
+              </a>
+            </div>
         </div>
       </div>
     </div>

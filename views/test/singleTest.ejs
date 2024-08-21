@@ -64,9 +64,17 @@
         <div class="buttons">
             <a class="btn btn-lg btn-success" href="/api/v1/test/update/<%= test._id %>">Edit</a>
         <br>
+        <a href="https://api.whatsapp.com/send?text=Check out this test on Naxgat: https://naxgat.com/api/v1/test/<%= test._id %> - <%= encodeURIComponent(test.name) %>" target="_blank" class="btn btn-info">
+          <i class="fa-solid fa-share-from-square"></i> &nbsp; &nbsp;Share
+        </a>
+        
+        <br>
         <form action="/api/v1/test/delete/<%= test._id %>?_method=DELETE" method="post">
             <button class="btn btn-lg btn-danger">Delete</button>
         </form>
+
+        
+        
         </div>
     <% } %>
 
