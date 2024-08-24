@@ -47,11 +47,9 @@
           </li>
         </ul>
         <% if (req.originalUrl === '/') { %>
-          <form class="d-flex" role="search" action="/">
+          <form class="d-flex" role="search" action="/#all-tests">
             <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search" name="keyword">
-            <a href="#all-tests">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </a>
+              <button class="btn btn-outline-info" type="submit">Search</button>
           </form>
         <% } %>
       </div>

@@ -1,87 +1,102 @@
+.ezy__sheader5 {
+  /* Bootstrap variables */
+  --bs-body-bg: #fff;
+  --bs-body-color: #fff;
 
-/* ___________________ */
-:root {
-    --color: #4973ff;
-  }
+  /* Easy Frontend variables */
+  --ezy-theme-color: rgb(13, 110, 253);
+  --ezy-theme-color-rgb: 13, 110, 253;
 
-  
-  .content {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 20px;
+  background-color: #fff;
+  background-image: url(https://cdn.easyfrontend.com/pictures/background/abstract-background1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: var(--bs-body-color);
+  overflow: hidden;
+  position: relative;
+  padding: 100px 0;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .ezy__sheader5 {
+    padding: 200px 0;
   }
-  
-  .hero {
-    position: relative;
-    padding: 5px;
-    background: #333333;
-    color: white;
-    height: 50vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+}
+
+/* Gray Block Style */
+.gray .ezy__sheader5,
+.ezy__sheader5.gray {
+  /* Bootstrap variables */
+  --bs-body-bg: rgb(246, 246, 246);
+}
+
+/* Dark Gray Block Style */
+.dark-gray .ezy__sheader5,
+.ezy__sheader5.dark-gray {
+  /* Bootstrap variables */
+  --bs-body-bg: rgb(30, 39, 53);
+}
+
+/* Dark Block Style */
+.dark .ezy__sheader5,
+.ezy__sheader5.dark {
+  /* Bootstrap variables */
+  --bs-body-bg: rgb(11, 23, 39);
+}
+
+.ezy__sheader5-heading {
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .ezy__sheader5-heading {
+    font-size: 60px;
   }
-  
-  .hero h2 {
-    position: relative;
-    z-index: 1;
-    font-size: 4.5rem;
-    margin: 0 0 10px;
-    line-height: 1;
-    color: rgba(255, 255, 255, 0.9);
-  }
-  
-  .hero p {
-    position: relative;
-    z-index: 1;
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.5);
-    line-height: 1.4;
-  }
-  
-  /* ========================= */
-  
-  .waves {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    background-color: var(--color);
-    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
-    transition: 500ms;
-  }
-  
-  .waves::before,
-  .waves::after {
-    content: '';
-    position: absolute;
-    width: 300vw;
-    height: 300vw;
-    top: -65vw;
-    left: 50%;
-    transform: translate(-50%, -75%);
-  }
-  
-  .waves::before {
-    border-radius: 44%;
-    background: rgba(51, 51, 51, 1);
-    animation: waves 8s linear infinite;
-  }
-  
-  .waves::after {
-    border-radius: 44%;
-    background: rgba(51, 51, 51, 0.5);
-    animation: waves 15s linear infinite;
-  }
-  
-  @keyframes waves {
-    0% {
-      transform: translate(-50%, -75%) rotate(0deg);
-    }
-    
-    100% {
-      transform: translate(-50%, -75%) rotate(360deg);
-    }
-  }
-  
+}
+
+.ezy__sheader5-sub-heading {
+  font-size: 20px;
+  line-height: 1.45;
+  opacity: 0.75;
+}
+.ezy__sheader5-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, #0ba6f9, #33f3e4);
+  opacity: 0.9;
+  z-index: -1;
+}
+
+.ezy__sheader5 li a {
+  color: #fff;
+  padding: 0 10px;
+  font-size: 18px;
+}
+
+.ezy__sheader5-shape-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.ezy__sheader5-shape-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 56px;
+}
+
+.ezy__sheader5-shape-divider .shape-fill {
+  color: var(--bs-body-bg);
+}

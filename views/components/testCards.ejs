@@ -1,67 +1,47 @@
 
+<%if(allTests && allTests.length){%>
 
-  <%if(allTests && allTests.length){%>
-
-      <section class="ezy__blog9">
-        <div class="container" id="cards-container">
-          <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-              <h2 class="ezy__blog9-heading mb-3 mt-0 text-danger">Discover the latest insights</h2>
-              <p class="ezy__blog9-sub-heading px-lg-5 mb-4">
-                Browse and learn more about testing process.
-              </p>
-            </div>
-          </div>
-      
-          <div class="row align-items-center mt-5">
-            
-
-            <%for(test of allTests){%>
-              
-
-                <div class="col-md-6 mb-4 pe-lg-4 border rounded">
-                  <article class="ezy__blog9-featured-post">
-                    <img src="<%= test.image.url %>" alt="" class="img-fluid rounded-3" />
-                    <div class="mt-4 pe-lg-4">
-                      <h4 class="ezy__blog9-title mb-2">
-                        <%= test.name %>
-                      </h4>
-                      <p class="ezy__blog9-description mt-3 mb-4">
-                        <%= test.introduction.substring(0, 200) + (test.introduction.length > 200 ? '...' : '') %>
-                      </p>
-                      <hr class="ezy__blog9-hr my-4" />
-                      <div class="row align-items-center">
-                        <div class="col">
-                          <div class="ezy__blog9-author d-inline-flex align-items-center">
-                            <div class="me-2">
-                              <img
-                                src="<%= test.user.avatar.url %>"
-                                alt=""
-                                class="img-fluid rounded-circle border"
-                                width="47"
-                                height="47"
-                              />
-                            </div>
-                            <div class="text-start">
-                              <p class="mb-0">By<b> <%= test.user.username %></b></p>
-                              <p class="mb-0 small opacity-50"><%= Math.ceil((Date.now() - test.date) / (1000 * 60 * 60 * 24)) %> days ago</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <a href="/api/v1/test/<%= test._id %>" class="btn ezy__blog9-btn-read-more">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-          <% } %>
-          </div>
-      
-          <div class="text-center mt-5">
-            <a href="#cards-container" class="btn btn-warning ezy__blog9-btn">Back to top</a>
+<section class="ezy__portfolio6" id="ezy__portfolio6">
+  <div class="container">
+    <div class="row justify-content-center mb-4 mb-md-5">
+      <div class="col-lg-6 text-center" id="all-tests">
+        <p class="ezy__portfolio6-sub-heading mb-2">Discover the latest posted by our beloved community members</p>
+        <h2 class="ezy__portfolio6-heading mb-0">All tests</h2>
+      </div>
+    </div>
+    <div class="row">
+      <%for(test of allTests){%>
+      <div class="col-md-6 col-lg-4">
+        <div class="ezy__portfolio6-item mt-4">
+          <img
+            src="<%= test.image.url %>"
+            alt=""
+            class="img-fluid w-100"
+          />
+          <div class="ezy__portfolio6-content p-4 p-lg-5">
+            <h4 class="mb-3"><%= test.name %></h4>
+            <p class="opacity-50 mb-0">
+              <%= test.introduction.substring(0, 200) + (test.introduction.length > 200 ? '...' : '') %>
+            </p>
+            <form action="/api/v1/test/<%= test._id %>" method="get">
+              <button class="btn btn-outline-warning mt-4 ezy__portfolio6-btn">See more</button>
+            </form>
           </div>
         </div>
-      </section>
+      </div>
+<% } %>
+    </div>
+  </div>
+</section>
+<% } else{ %>
+  <h2 class="no">No results found, Try with a different keyword or <a href="/">go back</a></h2>
+  <style>
+    .no {
+      text-align: center;
+      color: red;  
+      padding: 8rem;
+      font-size: xx-large;
+    }
+  </style>
 
-      <% } %>
+  <% } %>
