@@ -10,6 +10,10 @@
 :-webkit-any(a){
     text-decoration: none;
 }
+pre{
+    white-space: pre-wrap;
+    font-family: sans-serif;
+}
 body{
     font-family: 'Poppins', sans-serif;
 }
