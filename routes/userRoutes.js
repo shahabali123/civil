@@ -38,16 +38,22 @@ router.post('/login',
       // Send email to user on successful login
     try {
       await sendEmail({
-        email: req.user.email, // Send to the logged-in user's email
-        subject: 'Welcome Back to Naxgat!',
-        message: `<pre>Hi ${req.user.username}
-        Welcome back to Civil 2! We're glad you're here.
-        If you are professional and want to contribute on our platform you can post Laboratory tests and offer new jobs openings to professionals in career section.</pre>,
-
-
-
-Thanks,
-The Naxgat Team`
+        email: req.user.email, 
+        subject: 'Welcome Back to NAXGAT!',
+        message: `
+          <p>Hi ${req.user.username},</p>
+          <p>Welcome back to NAXGAT! We're glad you're here.</p>
+          
+          <p>If you are a professional and want to contribute to our platform, you can post Laboratory tests and offer new job openings to professionals in the career section.</p>
+          <br>
+          <p>Login Details:</p>
+          <p>Timestamp: ${new Date().toLocaleString()}</p>
+          ${req.ip ? `<p>IP Address: ${req.ip}</p>` : ''} 
+          ${req.headers['user-agent'] ? `<p>User Agent: ${req.headers['user-agent']}</p>` : ''}
+          <br>
+          <p>Thanks,</p>
+          <p>The NAXGAT Team</p>
+        `
       });
     } catch (error) {
       console.error('Error sending login email:', error);

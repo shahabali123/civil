@@ -118,7 +118,11 @@ app.use((err, req, res, next) => {
     } else if (err.name === 'MongoError' && err.code === 11000){
         err.status = 400;
         err.message = 'Duplicate entry';
-    } else {
+    }else if(err.name === 'UserExistsError'){
+        err.status = 400;
+        err.message = 'User already exists';
+    }
+     else {
         err.status = 500;
         err.message = 'Internal server error!';
     }

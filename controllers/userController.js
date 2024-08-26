@@ -13,42 +13,58 @@ exports.getRegistrationForm = (req, res)=>{
 }
 
 
-exports.registerUser = wrapAsync(async(req, res)=>{
-    const {username, email, profession, password} = req.body;
-    const newUser = new User({username, email, profession});
-    let url = req.file.path;
-    let filename = req.file.filename;
-    newUser.avatar = {
+exports.registerUser = wrapAsync(async (req, res, next) => {
+  try {
+    const { username, email, profession, password } = req.body;
+    const newUser = new User({ username, email, profession });
+
+    // Handle avatar upload (if provided)
+    if (req.file) {
+      let url = req.file.path;
+      let filename = req.file.filename;
+      newUser.avatar = {
         url: url,
-        filename: filename
-    };
-    const registerUser = await User.register(newUser, password);
-    req.login(registerUser,(err)=>{
-        if(err) return next(err);
-    })
-    req.flash('success', 'Account created successfully');
-
-    // send mail to admin about new user registration
-    
-    try {
-        const newUserUrl = `${req.protocol}://${req.get('host')}/api/v1/user/${registerUser._id}`
-    const message = `New user ${registerUser.username} (${registerUser.email}) has been registered.
-<img href="${registerUser.avatar.url}"/>
-            Their profession is: ${registerUser.profession}
-            You can view the user details here: <a href="${newUserUrl}">${registerUser.username}</a>`;
-
-        await sendEmail({
-            email: process.env.ADMIN_MAIL,
-            subject: 'New User Registered',
-            message: message,
-        })
-    } catch (error) {
-        console.log(error);
+        filename: filename,
+      };
     }
-    
 
-    res.redirect('/');
-})
+    const registeredUser = await User.register(newUser, password);
+
+    // Log in the newly registered user
+    req.login(registeredUser, (err) => {
+      if (err) {
+        return next(err); 
+      }
+
+      req.flash('success', 'Account created successfully');
+
+      // Send email to admin about new user registration
+      try {
+        const newUserUrl = `${req.protocol}://${req.get('host')}/api/v1/user/${registeredUser._id}`;
+        const message = `
+          <p>New user ${registeredUser.username} (${registeredUser.email}) has been registered.</p>
+          ${registeredUser.avatar.url ? `<img src="${registeredUser.avatar.url}" alt="User Avatar" style="max-width: 200px;">` : ''}
+          <p>Their profession is: ${registeredUser.profession}</p>
+          <p>You can view the user details here: <a href="${newUserUrl}">${registeredUser.username}</a></p>
+        `;
+
+        sendEmail({
+          email: process.env.ADMIN_MAIL,
+          subject: 'New User Registered on Civil 2', // More descriptive subject
+          message: message,
+        });
+      } catch (error) {
+        console.error('Error sending registration email to admin:', error);
+        // Consider adding a flash message to inform the user about the email issue
+      }
+
+      res.redirect('/'); 
+    });
+  } catch (err) {
+    return next(err);
+    res.redirect('/api/v1/register');
+  }
+});
 
 
 exports.getLoginForm = (req, res)=>{
