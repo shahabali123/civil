@@ -106,3 +106,10 @@
   background-color: var(--ezy-theme-color);
   border-color: var(--ezy-theme-color);
 }
+
+
+#all_test_cards{
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+}

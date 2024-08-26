@@ -54,9 +54,13 @@
                 <h5 class="ezy__blogdetails5-user mb-1"><%= job.postedBy.username %></h5>
                 <p class="opacity-75"><%= new Date(job.postedAt).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></p>
                 <p class="opacity-50">Posted <%= Math.ceil((Date.now() - job.postedAt) / (1000 * 60 * 60 * 24)) %>
-                    Day ago - <% if (job.applicant && job.applicant.length) { %>
-                      <%= job.applicant.length %>
-                    <% } else{%> 0 <% } %> applicant</p>
+                    Day ago - <p>
+                      <% if (job.applicant.length > 0) { %>
+                          <%= job.applicant.length %> applicant<%= job.applicant.length !== 1 ? 's' : '' %>
+                      <% } else { %>
+                          No applicants yet
+                      <% } %>
+                  </p></p>
               </div>
               <br><br>
               

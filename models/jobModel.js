@@ -54,10 +54,10 @@ const jobSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'User',
     },
-    applicant:{
+    applicant:[{
         type: mongoose.Schema.ObjectId,
         ref: 'User',
-    },
+    }],
     postedAt:{
         type: Date,
         default: Date.now
