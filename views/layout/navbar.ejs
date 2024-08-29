@@ -1,4 +1,4 @@
-<nav class="navbar bg-body-tertiary fixed-top" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top " data->
     <div class="container-fluid">
       <% if (currUser) { %>
         <a class="navbar-brand" href="/api/v1/user/<%= currUser._id %>"><img src="<%= currUser.avatar.url %>" alt="" <% if (currUser.role === 'admin') { %>
@@ -17,19 +17,19 @@
               <p class="nav-link active" aria-current="page"><%= currUser.username %></p>
             </li>
           <% } %>
-          <li class="nav-item">
+          <li class="nav-item btn">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item btn">
             <a class="nav-link" href="/api/v1/career">Career</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown btn">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               User
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu btn ">
             <% if (!currUser) { %>
-              <li><a class="dropdown-item" href="/api/v1/register">Register</a></li>
+              <li><a class="dropdown-item " href="/api/v1/register">Register</a></li>
               <li><a class="dropdown-item" href="/api/v1/login">Login</a></li>
             <% } %>
               <% if (currUser) { %>
@@ -41,8 +41,11 @@
               <% } %>
             </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item btn">
             <a class="nav-link " aria-disabled="true" href="/api/v1/test/create">Post new test</a>
+            
+          </li>
+          <li class="nav-item btn">
             <a class="nav-link " aria-disabled="true" href="/api/v1/job/create">Post new Job</a>
           </li>
         </ul>
