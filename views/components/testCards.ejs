@@ -1,47 +1,105 @@
 
-<%if(allTests && allTests.length){%>
-
-<section class="ezy__portfolio6" id="ezy__portfolio6">
-  <div class="container">
-    <div class="row justify-content-center mb-4 mb-md-5">
-      <div class="col-lg-6 text-center" id="all-tests">
-        <p class="ezy__portfolio6-sub-heading mb-2">Discover the latest posted by our beloved community members</p>
-        <h2 class="ezy__portfolio6-heading mb-0">All tests</h2>
-      </div>
-    </div>
-    <div class="row" id="all_test_cards">
-      <%for(test of allTests){%>
-      <div class="col-md-6 col-lg-4">
-        <div class="ezy__portfolio6-item mt-4">
-          <img
-            src="<%= test.image.url %>"
-            alt=""
-            class="img-fluid w-100"
-          />
-          <div class="ezy__portfolio6-content p-4 p-lg-5">
-            <h4 class="mb-3"><%= test.name %></h4>
-            <p class="opacity-50 mb-0">
-              <%= test.introduction.substring(0, 200) + (test.introduction.length > 200 ? '...' : '') %>
-            </p>
-            <form action="/api/v1/test/<%= test._id %>" method="get">
-              <button class="btn btn-outline-warning mt-4 ezy__portfolio6-btn">See more</button>
-            </form>
-          </div>
-        </div>
-      </div>
-<% } %>
-    </div>
-  </div>
-</section>
-<% } else{ %>
-  <h2 class="no">No results found, Try with a different keyword or <a href="/">go back</a></h2>
-  <style>
-    .no {
+<style>
+  body {
+      font-family: 'Roboto', sans-serif;
+  }
+  .ezy__portfolio6 {
+      padding: 60px 0;
+      background-color: #f9f9f9;
+  }
+  .ezy__portfolio6-sub-heading {
+      font-size: 18px;
+      color: #777;
+  }
+  .ezy__portfolio6-heading {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 40px;
+  }
+  .ezy__portfolio6-item {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+  }
+  .ezy__portfolio6-item:hover {
+      transform: translateY(-10px);
+  }
+  .ezy__portfolio6-item img {
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid #ddd;
+  }
+  .ezy__portfolio6-content {
+      padding: 20px;
+  }
+  .ezy__portfolio6-content h4 {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 15px;
+  }
+  .ezy__portfolio6-content p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 20px;
+  }
+  .ezy__portfolio6-btn {
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: 2px solid #ffcc00;
+      color: #ffcc00;
+      transition: background-color 0.3s, color 0.3s;
+  }
+  .ezy__portfolio6-btn:hover {
+      background-color: #ffcc00;
+      color: #fff;
+  }
+  .no {
       text-align: center;
       color: red;  
       padding: 8rem;
       font-size: xx-large;
-    }
-  </style>
-
-  <% } %>
+  }
+</style>
+</head>
+<body>
+<%if(allTests && allTests.length){%>
+<section class="ezy__portfolio6" id="ezy__portfolio6">
+  <div class="container">
+      <div class="row justify-content-center mb-4 mb-md-5">
+          <div class="col-lg-6 text-center" id="all-tests">
+              <p class="ezy__portfolio6-sub-heading mb-2">Discover the latest posted by our beloved community members</p>
+              <h2 class="ezy__portfolio6-heading mb-0">All tests</h2>
+          </div>
+      </div>
+      <div class="row" id="all_test_cards">
+          <%for(test of allTests){%>
+          <div class="col-md-6 col-lg-4">
+              <div class="ezy__portfolio6-item mt-4">
+                  <img
+                      src="<%= test.image.url %>"
+                      alt="Test image with detailed description"
+                      class="img-fluid w-100"
+                  />
+                  <div class="ezy__portfolio6-content p-4 p-lg-5">
+                      <h4 class="mb-3"><%= test.name %></h4>
+                      <p class="opacity-50 mb-0">
+                          <%= test.introduction.substring(0, 200) + (test.introduction.length > 200 ? '...' : '') %>
+                      </p>
+                      <form action="/api/v1/test/<%= test._id %>" method="get">
+                          <button class="btn btn-outline-warning mt-4 ezy__portfolio6-btn">See more</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+          <% } %>
+      </div>
+  </div>
+</section>
+<% } else{ %>
+<h2 class="no">No results found, Try with a different keyword or <a href="/">go back</a></h2>
+<% } %>
