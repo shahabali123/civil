@@ -1,129 +1,109 @@
 <%- include('../layout/header.ejs') %>
-
-<!-- Bootstrap tables -->
-<div class="table-responsive-sm"> <table class="table table-danger table-striped table-hover caption-top">
-  <caption>List of All Users</caption>
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">User name</th>
-      <th scope="col">Profession</th>
-      <th scope="col">Joining date</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if (users && users.length > 0) { %> 
-      <% for( let index = 0; index < users.length; index++ ) { %>
-        <tr>  
-            <th scope="row"><%= index+1 %></th>
-            <td><a href="/api/v1/user/<%= users[index]._id %>"><%= users[index].username %></a></td>
-            <td><%= users[index].profession %></td>
-            <td><%= new Date(users[index].createdAt).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></td>
-            <td>
-              <form action="/api/v1/user/<%= users[index]._id %>/delete?_method=DELETE" method="post">
-                <button type="submit" class="btn btn-sm btn-danger d-flex align-items-center">Delete User</button>
-              </form>
-            </td>
-        </tr>
-      <% } %> 
-    <% } else { %>
-      <tr>
-        <td colspan="6" class="text-center">No users found.</td> 
-      </tr>
-    <% } %>
-  </tbody>
-</table>
+<div class="content">
+  <% if (users && users.length > 0) { %>
+    <div class="section">
+      <h2>List of All Users</h2>
+      <div class="table-container">
+          <table class="user-table">
+              <tbody>
+                
+                  <tr>
+                      <th>User name</th>
+                      <th>Profession</th>
+                      <th>Joining date</th>
+                      <th>Action</th>
+                  </tr>
+                  <% for( let index = 0; index < users.length; index++ ) { %>
+                    <tr>
+                      <td><a href="/api/v1/user/<%= users[index]._id %>"><%= users[index].username %></a></td>
+                      <td><%= users[index].profession %></td>
+                      <td><%= new Date(users[index].createdAt).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></td>
+                      <td><form action="/api/v1/user/<%= users[index]._id %>/delete?_method=DELETE" method="post">
+                        <button type="submit" class="btn btn-sm btn-danger d-flex align-items-center">Delete User</button>
+                      </form></td>
+                  </tr>
+                  
+                    <% } %>
+                  
+                 
+              </tbody>
+          </table>
+      </div>
+  </div>
+  <% } %>
+  <div class="section">
+      <h2>List of All Tests</h2>
+      <div class="table-container">
+          <table class="test-table">
+              <tbody>
+                
+                  <tr>
+                      <th>Title</th>
+                      <th>Category</th>
+                      <th>Posted by</th>
+                      <th>Posted at</th>
+                      <th>Action</th>
+                  </tr>
+                  <% if (tests && tests.length > 0) { %> 
+                    <% for( let index = 0; index < tests.length; index++ ) { %>
+                      <tr>  
+                          <td><a href="/api/v1/test/<%= tests[index]._id %>"><%= tests[index].name %></a></td>
+                          <td><%= tests[index].category %></td>
+                          <td><%= tests[index].user.username %></td> 
+                          <td><%= new Date(tests[index].date).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></td>
+                          <td>
+                            <form action="/api/v1/test/delete/<%= tests[index]._id %>?_method=DELETE" method="post">
+                              <button type="submit" class="btn btn-sm btn-danger d-flex align-items-center">Delete Test</button>
+                            </form>
+                          </td>
+                      </tr>
+                    <% } %> 
+                  <% } else { %>
+                    <tr>
+                      <td colspan="6" class="text-center">No tests found.</td> 
+                    </tr>
+                  <% } %>
+                  
+              </tbody>
+          </table>
+      </div>
+  </div>
+  <div class="section">
+      <h2>List of All Jobs</h2>
+      <div class="table-container">
+          <table class="job-table">
+              <tbody>
+                  <tr>
+                      <th>Title</th>
+                      <th>Company</th>
+                      <th>Posted by</th>
+                      <th>Posted at</th>
+                      <th>Action</th>
+                  </tr>
+                  <% if (jobs && jobs.length > 0) { %> 
+                    <% for( let index = 0; index < jobs.length; index++ ) { %>
+                      <tr>  
+                          <td><a href="/api/v1/job/<%= jobs[index]._id %>"><%= jobs[index].title %></a></td>
+                          <td><%= jobs[index].companyName %></td>
+                          <td><%= jobs[index].postedBy.username %></td> 
+                          <td><%= new Date(jobs[index].postedAt).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></td>
+                          <td>
+                            <form action="/api/v1/job/<%= jobs[index]._id %>/delete?_method=DELETE" method="post">
+                              <button type="submit" class="btn btn-sm btn-danger d-flex align-items-center">Delete Job</button>
+                            </form>
+                          </td>
+                      </tr>
+                    <% } %> 
+                  <% } else { %>
+                    <tr>
+                      <td colspan="6" class="text-center">No jobs found.</td> 
+                    </tr>
+                  <% } %>
+                  
+              </tbody>
+          </table>
+      </div>
+  </div>
 </div>
-
-
-
-<hr>
-<br>
-
-<div id="dash-tests" class="table-responsive-sm"> 
-  <table class="table table-success table-striped table-hover caption-top ">
-    <caption>List of All Tests</caption>
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Title</th>
-        <th scope="col">Category</th>
-        <th scope="col">Posted by</th>
-        <th scope="col">Posted at</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% if (tests && tests.length > 0) { %> 
-        <% for( let index = 0; index < tests.length; index++ ) { %>
-          <tr>  
-              <th scope="row"><%= index+1 %></th>
-              <td><a href="/api/v1/test/<%= tests[index]._id %>"><%= tests[index].name %></a></td>
-              <td><%= tests[index].category %></td>
-              <td><%= tests[index].user.username %></td> 
-              <td><%= new Date(tests[index].date).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></td>
-              <td>
-                <form action="/api/v1/test/delete/<%= tests[index]._id %>?_method=DELETE" method="post">
-                  <button type="submit" class="btn btn-sm btn-danger d-flex align-items-center">Delete Test</button>
-                </form>
-              </td>
-          </tr>
-        <% } %> 
-      <% } else { %>
-        <tr>
-          <td colspan="6" class="text-center">No tests found.</td> 
-        </tr>
-      <% } %>
-    </tbody>
-  </table>
-</div>
-
-
-
-
-<!-- jobs -->
-<hr>
-<br>
-
-<div id="dash-jobs" class="table-responsive-sm"> 
-  <table class="table table-info table-striped table-hover caption-top ">
-    <caption>List of All Jobs</caption>
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Title</th>
-        <th scope="col">Company</th>
-        <th scope="col">Posted by</th>
-        <th scope="col">Posted at</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% if (jobs && jobs.length > 0) { %> 
-        <% for( let index = 0; index < jobs.length; index++ ) { %>
-          <tr>  
-              <th scope="row"><%= index+1 %></th>
-              <td><a href="/api/v1/job/<%= jobs[index]._id %>"><%= jobs[index].title %></a></td>
-              <td><%= jobs[index].companyName %></td>
-              <td><%= jobs[index].postedBy.username %></td> 
-              <td><%= new Date(jobs[index].postedAt).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) %></td>
-              <td>
-                <form action="/api/v1/job/<%= jobs[index]._id %>/delete?_method=DELETE" method="post">
-                  <button type="submit" class="btn btn-sm btn-danger d-flex align-items-center">Delete Job</button>
-                </form>
-              </td>
-          </tr>
-        <% } %> 
-      <% } else { %>
-        <tr>
-          <td colspan="6" class="text-center">No jobs found.</td> 
-        </tr>
-      <% } %>
-    </tbody>
-  </table>
-</div>
-
-
 
 <%- include('../layout/footer.ejs') %>
